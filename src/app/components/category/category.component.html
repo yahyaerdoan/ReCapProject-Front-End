@@ -2,7 +2,7 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <ul *ngIf="dataLoaded==true" class="list-group">
-  <li [class]="getAllCategoryClass()" routerLink = "/cars"  class="list-group-item"><th>Kategoriler</th></li>
+  <li (click)="clearCurrentCategory()" [class]="getAllCategoryClass()" routerLink = "/cars"  class="list-group-item"><th>Kategoriler</th></li>
   <li (click)="setCurrentCategory(category)" routerLink = "/cars/category/{{category.categoryId}}" 
   *ngFor="let category of categories" [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
 </ul>
