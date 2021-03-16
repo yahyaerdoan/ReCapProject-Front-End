@@ -1,0 +1,30 @@
+<div *ngIf="dataLoaded == false" 
+class="spinner-border text-secondary" role="status">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<div *ngIf="dataLoaded == true" class="customer">
+    Müşteri Listesi
+</div>
+<br>
+
+<table *ngIf="dataLoaded==true"  class="table table-hover">
+    <thead>
+        <tr>
+            <th>Müşteri Id</th>
+            <th>Adı</th>
+            <th>Soyadı</th>            
+            <th>Şirket Adı</th>
+            <th>Email Adres</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customerDetailDto of customerDetailDtos"> 
+        <td>{{customerDetailDto.customerId}}</td>
+        <td>{{customerDetailDto.firstName}}</td>
+        <td>{{customerDetailDto.lastName}}</td>      
+        <td>{{customerDetailDto.companyName}}</td>
+        <td>{{customerDetailDto.email}}</td>
+    </tr>
+</tbody>
+</table>

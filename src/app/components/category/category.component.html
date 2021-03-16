@@ -1,0 +1,9 @@
+<div *ngIf="dataLoaded==false" class="spinner-grow text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<ul *ngIf="dataLoaded==true" class="list-group">
+  <li [class]="getAllCategoryClass()" routerLink = "/cars"  class="list-group-item"><th>Kategoriler</th></li>
+  <li (click)="setCurrentCategory(category)" routerLink = "/cars/category/{{category.categoryId}}" 
+  *ngFor="let category of categories" [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
+</ul>
+<h6 *ngIf="currentCategory">{{currentCategory.categoryName}} paketi seçtiniz!</h6>
