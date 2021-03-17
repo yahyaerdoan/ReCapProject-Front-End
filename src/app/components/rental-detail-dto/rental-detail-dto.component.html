@@ -1,8 +1,33 @@
-<ul class="list-group">
-    <li class="list-group-item"><th>Kiralanan Araç Detayları</th></li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-    <li class="list-group-item">And a fifth one</li>
-  </ul>
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-grow text-warning"
+  role="status"
+>
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div *ngIf="dataLoaded == true" class="rentalDetailDto"></div>
+<th>Araç Kiralama Listesi</th>
+<table *ngIf="dataLoaded == true" class="table table-hover">
+  <thead>
+    <tr>
+      <th>Araç İsmi</th>
+      <th>Marka</th>
+      <th>Model</th>
+      <th>Adı Soyadı</th>
+      <th>Şirket Adı</th>
+      <th>Kiralama Tarihi</th>
+      <th>Kiralama Teslim Tarihi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rentalDetailDto of rentalDetailDtos">
+      <td>{{ rentalDetailDto.carName }}</td>
+      <td>{{ rentalDetailDto.brandName }}</td>
+      <td>{{ rentalDetailDto.brandModel }}</td>
+      <td>{{ rentalDetailDto.firstName + " " + rentalDetailDto.lastName }}</td>
+      <td>{{ rentalDetailDto.companyName }}</td>
+      <td>{{ rentalDetailDto.rentDate }}</td>
+      <td>{{ rentalDetailDto.returnDate }}</td>
+    </tr>
+  </tbody>
+</table>

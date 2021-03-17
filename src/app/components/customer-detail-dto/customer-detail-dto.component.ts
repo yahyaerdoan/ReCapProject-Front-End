@@ -19,8 +19,7 @@ export class CustomerDetailDtoComponent implements OnInit {
   getCustomerDetailDtos(){
     this.customerDetailDtoService.getCustomerDetailDtos().subscribe((response) =>{
       this.customerDetailDtos = response.data;
-      this.dataLoaded = true;
-      console.log ("yahya");
+      this.dataLoaded = true;      
     });
   }
 
