@@ -1,4 +1,4 @@
-export interface responseModel{
-    success : boolean;
-    message : string;
+export interface responseModel {
+  success: boolean;
+  message: string;
 }

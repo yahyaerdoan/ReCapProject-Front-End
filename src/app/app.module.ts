@@ -16,6 +16,7 @@ import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dt
 import { RentalComponent } from './components/rental/rental.component';
 import { RentalDetailDtoComponent } from './components/rental-detail-dto/rental-detail-dto.component';
 import { CustomerDetailDtoComponent } from './components/customer-detail-dto/customer-detail-dto.component';
+import { CarDetailImageComponent } from './components/car-detail-image/car-detail-image.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { CustomerDetailDtoComponent } from './components/customer-detail-dto/cus
     RentalComponent,
     RentalDetailDtoComponent,
     CustomerDetailDtoComponent,
+    CarDetailImageComponent,
 
   ],
   imports: [

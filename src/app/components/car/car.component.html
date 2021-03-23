@@ -1,4 +1,30 @@
-<div *ngIf="dataLoaded == false" class="spinner-grow text-warning" role="status">
+<div>
+  <div *ngIf="dataLoaded==false" class="spinner-grow text-warning" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<ul *ngIf="dataLoaded==true" class="list-group">
+  <li (click)="clearCurrentCar()" [class]="getAllCarClass()"   routerLink = "/cars"  class="list-group-item"><th>Araçlar</th></li>
+  <li (click)="setCurrentCar(car)" routerLink = "/cars/image/{{car.carId}}" *ngFor="let car of cars" [class]="getCurrentCarClass(car)">{{car.carName}}</li>
+</ul>
+<h6 *ngIf="currentCar">{{currentCar.carName}} aracı seçtiniz!</h6>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="dataLoaded == false" class="spinner-grow text-warning" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
 <div *ngIf="dataLoaded == true" class="car"> <th>Araç Listesi</th>
@@ -27,3 +53,23 @@
     <td>{{ car.description }}</td>
   </tr>
 </table>
+
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
