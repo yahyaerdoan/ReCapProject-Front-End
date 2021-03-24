@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/car-detail-dto';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
+import { ToastrService } from 'ngx-toastr';
+import { RentService } from 'src/app/services/rent.service';
 
 
 @Component({
@@ -17,7 +19,9 @@ export class CarDetailDtoComponent implements OnInit {
   dataLoaded = false;
 
   constructor(private carDetailDtoService : CarDetailDtoService,     
-    private activatedRoute : ActivatedRoute) { }
+    private activatedRoute : ActivatedRoute, 
+    private toastrService : ToastrService,
+    private rentService : RentService ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -60,5 +64,17 @@ export class CarDetailDtoComponent implements OnInit {
       this.carDetailDtos = response.data;
       this.dataLoaded = true;      
     })
-  }  
+  }
+  addToRent(carDetailDto : CarDetailDto){
+    
+    
+      if(carDetailDto.carId===0){
+        this.toastrService.error("Bu araç bulunmuyor");
+      }
+      else {
+        this.toastrService.success("Kiralama Sepetine Eklendi", carDetailDto.carName);
+        this.rentService.addToRent(carDetailDto);
+      }
+    
+    }  
 }

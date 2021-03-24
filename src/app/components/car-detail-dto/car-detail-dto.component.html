@@ -31,6 +31,7 @@
       <th>Günlük Fiyat</th>
       <th>Kdv'li Günlük Fiyat</th>
       <th>Araç Bilgileri</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -41,9 +42,10 @@
       <td>{{ carDetailDto.brandModel }}</td>
       <td>{{ carDetailDto.modelYear }}</td>
       <td>{{ carDetailDto.colorName }}</td>
-      <td>{{ carDetailDto.dailyPrice | currency }}</td>
-      <td>{{ carDetailDto.dailyPrice | vatAdded:18 | currency }}</td>
+      <td>{{ carDetailDto.dailyPrice | currency: "TRY" :"₺" }}</td>
+      <td>{{ carDetailDto.dailyPrice | vatAdded:18 | currency: "TRY" :"₺" }}</td>
       <td>{{ carDetailDto.description }}</td>
+      <td><button (click)="addToRent(carDetailDto)" type="button" class="btn btn-success">Kirala</button></td>
     </tr>
   </tbody>
 </table>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CarDetailDto } from 'src/app/models/car-detail-dto';
 import { Image } from 'src/app/models/image';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
@@ -21,7 +22,8 @@ export class CarDetailImageComponent implements OnInit {
 
   dataLoaded = false;
   constructor(private carDetailDtoService : CarDetailDtoService,
-    private imageService : ImageService, 
+    private imageService : ImageService,
+    private toastrService : ToastrService,    
     private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -33,26 +35,21 @@ export class CarDetailImageComponent implements OnInit {
   }
   getCarDetailDtos(){
     this.carDetailDtoService.getCarDetailDtos().subscribe((response) =>{
-      this.carDetailDtos = response.data;      
-      console.log(this.carDetailDto, response.data)
+      this.carDetailDtos = response.data;  
       this.dataLoaded = true;      
     });
-  }
-
-  
+  }  
   getCarsDetailsByCar(carId : number){
     this.carDetailDtoService.getCarsByCar(carId).subscribe((response) => {
       this.carDetailDto = response.data[0];
       this.dataLoaded = true;      
      })
   }  
-  
   getImagesByCar(carId : number){
   this.imageService.getImages(carId).subscribe((response) => {
   this.images= response.data;
   this.dataLoaded = true;
-  this.currentImage=this.images[0]
-  console.log(response);      
+  this.currentImage=this.images[0]       
   })  
   }  
   getCurrentImageClass(image : Image){
@@ -64,6 +61,10 @@ export class CarDetailImageComponent implements OnInit {
       return "carousel-item "
     }    
   }
+  addToRent(carDetailDto : CarDetailDto){
+    console.log(carDetailDto)
+
+  } 
 }
 
   
