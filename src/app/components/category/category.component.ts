@@ -12,6 +12,8 @@ export class CategoryComponent implements OnInit {
   categories : Category[] = [];
   currentCategory : Category | null;
   dataLoaded = false;
+  filterText ="";
+  
   constructor(private categoryService : CategoryService) { }
 
   ngOnInit(): void {

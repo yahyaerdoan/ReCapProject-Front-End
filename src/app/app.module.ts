@@ -17,6 +17,13 @@ import { RentalComponent } from './components/rental/rental.component';
 import { RentalDetailDtoComponent } from './components/rental-detail-dto/rental-detail-dto.component';
 import { CustomerDetailDtoComponent } from './components/customer-detail-dto/customer-detail-dto.component';
 import { CarDetailImageComponent } from './components/car-detail-image/car-detail-image.component';
+import { FilterColorPipe } from './pipes/filter-color.pipe';
+import { FilterBrandPipe } from './pipes/filter-brand.pipe';
+import { FilterCarDetailDtoPipe } from './pipes/filter-car-detail-dto.pipe';
+import { FilterCategoryPipe } from './pipes/filter-category.pipe';
+import { VatAddedPipe } from './pipes/vat-added.pipe';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -35,12 +42,20 @@ import { CarDetailImageComponent } from './components/car-detail-image/car-detai
     RentalDetailDtoComponent,
     CustomerDetailDtoComponent,
     CarDetailImageComponent,
+    FilterCarDetailDtoPipe, 
+    FilterColorPipe,
+    FilterBrandPipe,   
+    FilterCategoryPipe,
+    VatAddedPipe,
+    
+    
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

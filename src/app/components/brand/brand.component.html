@@ -1,8 +1,17 @@
 <div *ngIf="dataLoaded==false" class="spinner-grow text-warning" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+
+<div class="mb-3">
+  <label for="filterText" class="form-label"><h6>Marka Sorgula</h6></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="sorgulama ifadesi giriniz">
+</div> 
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} sorguladınız!
+</div>
+
 <ul *ngIf="dataLoaded==true" class="list-group">
   <li (click)="clearCurrentBrand()" [class]="getAllBrandClass()"   routerLink = "/cars"  class="list-group-item"><th>Markalar</th></li>
-  <li (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
+  <li (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands | filterBrand: filterText" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
 </ul>
 <h6 *ngIf="currentBrand">{{currentBrand.brandName}} markayı seçtiniz!</h6>

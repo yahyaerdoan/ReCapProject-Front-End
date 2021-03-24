@@ -1,9 +1,18 @@
 <div *ngIf="dataLoaded==false" class="spinner-grow text-warning" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+
+<div class="mb-3">
+  <label for="filterText" class="form-label"><h6>Kategori Sorgula</h6></label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="sorgulama ifadesi giriniz">
+</div> 
+<div *ngIf="filterText" class="alert alert-success">
+  {{filterText}} sorguladınız!
+</div>
+
 <ul *ngIf="dataLoaded==true" class="list-group">
   <li (click)="clearCurrentCategory()" [class]="getAllCategoryClass()" routerLink = "/cars"  class="list-group-item"><th>Kategoriler</th></li>
   <li (click)="setCurrentCategory(category)" routerLink = "/cars/category/{{category.categoryId}}" 
-  *ngFor="let category of categories" [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
+  *ngFor="let category of categories | filterCategory: filterText" [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
 </ul>
 <h6 *ngIf="currentCategory">{{currentCategory.categoryName}} paketi seçtiniz!</h6>

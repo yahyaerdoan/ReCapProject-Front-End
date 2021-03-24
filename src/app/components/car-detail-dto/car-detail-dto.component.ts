@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/car-detail-dto';
-import { Image } from 'src/app/models/image';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
-import { ImageService } from 'src/app/services/image.service';
 
 
 @Component({
@@ -15,22 +13,16 @@ export class CarDetailDtoComponent implements OnInit {
 
   carDetailDtos : CarDetailDto[] = [];
   carDetailDto : CarDetailDto;
-  // images : Image[] = [];
-  //carId : number;
-  //path ="https://localhost:44339/images";
-  //currentImage : Image | null;
-
+  filterText ="";
   dataLoaded = false;
-  constructor(private carDetailDtoService : CarDetailDtoService,
-    private imageService : ImageService, 
+
+  constructor(private carDetailDtoService : CarDetailDtoService,     
     private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if(params["categoryId"]){this.getCarsDetailsByCategory(params["categoryId"])}
-      else if(params["carId"]){this.getCarsDetailsByCar(params["carId"]); 
-      // this.getImagesByCar(params["carId"]);
-    }      
+      else if(params["carId"]){this.getCarsDetailsByCar(params["carId"]);}      
       else if(params["brandId"]){this.getCarsDetailsByBrand(params["brandId"])}
       else if(params["colorId"]){this.getCarsDetailsByColor(params["colorId"])}     
       
@@ -40,8 +32,7 @@ export class CarDetailDtoComponent implements OnInit {
   getCarDetailDtos(){
     this.carDetailDtoService.getCarDetailDtos().subscribe((response) =>{
       this.carDetailDtos = response.data;
-      this.carDetailDto= response.data[0];
-      console.log(this.carDetailDto, response.data)
+      this.carDetailDto= response.data[0];      
       this.dataLoaded = true;      
     });
   }
@@ -67,25 +58,7 @@ export class CarDetailDtoComponent implements OnInit {
   getCarsDetailsByColor(colorId : number){
     this.carDetailDtoService.getCarsByColor(colorId).subscribe((response) => {
       this.carDetailDtos = response.data;
-      this.dataLoaded = true;
-      
+      this.dataLoaded = true;      
     })
-  }
-  // getImagesByCar(carId : number){
-  // this.imageService.getImages(carId).subscribe((response) => {
-  // this.images= response.data;
-  // this.dataLoaded = true;
-  // this.currentImage=this.images[0]
-  // console.log(response);      
-  // })  
-  // }  
-  // getCurrentImageClass(image : Image){
-
-  //   if(this.currentImage == image ){
-  //     return "carousel-item active"
-  //   }
-  //   else{
-  //     return "carousel-item "
-  //   }    
-  // }
+  }  
 }
