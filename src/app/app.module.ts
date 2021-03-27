@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,9 @@ import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { FooterComponent } from './components/footer/footer.component';
 import { RentSummaryComponent } from './components/rent-summary/rent-summary.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 
 
 
@@ -54,6 +57,9 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
     VatAddedPipe,
     FooterComponent,
     RentSummaryComponent,
+    CarAddComponent,
+    ColorAddComponent,
+    BrandAddComponent,
     
     
 
@@ -67,6 +73,7 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
       positionClass:"toast-bottom-right"
     }),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
 
   ],
   providers: [],

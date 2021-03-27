@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -13,8 +14,9 @@ export class BrandComponent implements OnInit {
   currentBrand : Brand | null;
   dataLoaded = false;
   filterText ="";
+  selectedBrand : string;
   
-  constructor(private brandService : BrandService) { }
+  constructor(private brandService : BrandService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getBrands();
@@ -48,5 +50,11 @@ export class BrandComponent implements OnInit {
   }
   clearCurrentBrand(){
     this.currentBrand=null;
+  } 
+
+  selectBrandChange(selectBrand: string) {
+    this.selectedBrand = selectBrand;    
+    this._router.navigate(["/cars/brand/" + this.selectedBrand])
+    console.log(selectBrand);
   }
 }

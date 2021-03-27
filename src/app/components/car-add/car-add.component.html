@@ -1,0 +1,93 @@
+<div class="content">
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-header"><h5 class="title" >Araç Ekle</h5></div>
+            <div class="card-body">
+                <form [formGroup]="carAddForm">
+                    <div class="mb-3">
+                        <label for="carName"><h6>Araç ismi</h6></label>
+                        <div class="form-group">
+                            <input type="text" 
+                            id="carName" 
+                            formControlName="carName" class="form-control" 
+                            placeholder="araç ismi"/>
+                        </div>
+                    </div>
+                   
+                    <div class="mb-3">
+                        <label for="categoryName"><h6>Kategori</h6></label>
+                        <div class="form-group">
+                            <input type="text" 
+                            id="categoryName" 
+                            formControlName="categoryName" class="form-control" 
+                            placeholder="kategori"/>
+                        </div>
+                    </div>
+
+                   <div class="mb-3">
+                    <label for="brandName"><h6>Marka</h6></label>
+                    <div class="form-group">
+                        <input type="text" 
+                        id="brandName" 
+                        formControlName="brandName" class="form-control" 
+                        placeholder="marka"/>
+                    </div>
+                   </div>
+
+                   
+
+                   <div class="mb-3">
+                    <label for="colorName"><h6>Renk</h6></label>
+                    <!-- <div class="form-group">
+                        <input type="text" 
+                        id="colorName" 
+                        formControlName="colorName" class="form-control" 
+                        placeholder="renk"/>
+                    </div> -->
+                    <select #selectBrand (change)="selectColorChange(selectBrand.value)"
+                     class="form-select form-select-lg" aria-label=".form-select-lg example">
+                     <option selected value="0">Renkler</option>
+                     <option *ngFor="let color of colors" [value]="color.colorId">{{ color.colorName }}</option>
+                    </select>
+                   </div>
+
+                   <div class="mb-3">
+                    <label for="modelYear"><h6>Model Yılı</h6></label>
+                    <div class="form-group">
+                        <input type="text" 
+                        id="modelYear" 
+                        formControlName="modelYear" class="form-control" 
+                        placeholder="model yılı"/>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="description"><h6>Araç Bilgileri</h6></label>
+                    <div class="form-group">
+                        <input type="text" 
+                        id="description" 
+                        formControlName="description" class="form-control" 
+                        placeholder="araç bilgileri"/>
+                    </div>
+                  </div>                  
+
+                 <div  class="mb-3">
+                     <label for="dailyPrice"><h6>Günlük Fiyatı</h6></label>
+                     <div class="form-group">
+                          <input type="number" 
+                          id="dailyPrice" 
+                          formControlName="dailyPrice" class="form-control" 
+                          placeholder="günlük fiyatı"/>
+                    </div>
+                </div>
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-fill btn-success" (click)="add()">Ekle</button> 
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

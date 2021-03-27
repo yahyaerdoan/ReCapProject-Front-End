@@ -4,14 +4,49 @@
 
 <div class="mb-3">
   <label for="filterText" class="form-label"><h6>Marka Sorgula</h6></label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="sorgulama ifadesi giriniz">
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="marka sorgula" placeholder="sorgulama ifadesi giriniz">
 </div> 
 <div *ngIf="filterText" class="alert alert-success">
   {{filterText}} sorguladınız!
 </div>
 
-<ul *ngIf="dataLoaded==true" class="list-group">
+<label class="form-label"><h6>Markalar</h6></label>
+<select  #selectBrand (change)="selectBrandChange(selectBrand.value)" class="form-select" aria-label="Default select example">
+      <option>Markalar</option>
+      <option (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" 
+      *ngFor="let brand of brands | filterBrand: filterText" [value]="brand.brandId">{{ brand.brandName }}</option>
+    </select>
+    <h6 *ngIf="currentBrand">{{currentBrand.brandName}} markayı seçtiniz!</h6>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <label class="form-label"><h6>Markalar</h6></label>
+  <select  *ngIf="dataLoaded==true" class="list-group" class="form-select" [(ngModel)]="currentBrand" aria-label="Default select example">
+    <option selected (click)="clearCurrentBrand()" [class]="getAllBrandClass()"   routerLink = "/cars"  class="list-group-item"><th>Markalar</th></option>
+    <option (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands | filterBrand: filterText" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</option>
+  </select>
+    -->
+
+
+
+
+
+<!-- <ul *ngIf="dataLoaded==true" class="list-group">
   <li (click)="clearCurrentBrand()" [class]="getAllBrandClass()"   routerLink = "/cars"  class="list-group-item"><th>Markalar</th></li>
   <li (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands | filterBrand: filterText" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</li>
 </ul>
-<h6 *ngIf="currentBrand">{{currentBrand.brandName}} markayı seçtiniz!</h6>
+<h6 *ngIf="currentBrand">{{currentBrand.brandName}} markayı seçtiniz!</h6> -->
