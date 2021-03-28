@@ -1,36 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from "@angular/forms"
 import { ToastrService } from 'ngx-toastr';
-import { ColorService } from 'src/app/services/color.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
-  selector: 'app-color-add',
-  templateUrl: './color-add.component.html',
-  styleUrls: ['./color-add.component.css']
+  selector: 'app-category-add',
+  templateUrl: './category-add.component.html',
+  styleUrls: ['./category-add.component.css']
 })
+export class CategoryAddComponent implements OnInit {
 
-export class ColorAddComponent implements OnInit{
-  
-  colorAddForm : FormGroup;
+  categoryAddForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-  private colorService : ColorService,
+  private categoryService : CategoryService,
   private toastrService : ToastrService) { }
 
   ngOnInit(): void {
-    this.createColorAddForm();
+    this.createCategoryAddForm();
   }
 
-  createColorAddForm(){
-    this.colorAddForm = this.formBuilder.group({      
-      //colorId : ["",Validators.required],
-      colorName : ["",Validators.required],        
+  createCategoryAddForm(){
+    this.categoryAddForm = this.formBuilder.group({      
+      //categoryId : ["",Validators.required],
+      categoryName : ["",Validators.required],        
     });
   }
   add(){
-    if(this.colorAddForm.valid){     
-      let colorModel = Object.assign({},this.colorAddForm.value)
-      this.colorService.add(colorModel).subscribe(response =>{        
+    if(this.categoryAddForm.valid){     
+      let categoryModel = Object.assign({},this.categoryAddForm.value)
+      this.categoryService.add(categoryModel).subscribe(response =>{        
         this.toastrService.success(response.message, "Başarılı")
       },responseError=>{
         if(responseError.error.ValidationErrors.length>0){
@@ -45,7 +44,3 @@ export class ColorAddComponent implements OnInit{
     }
   }
 }
-
-  
-
-

@@ -14,6 +14,8 @@ export class CarComponent implements OnInit {
   cars : Car[] = [];
   currentCar : Car | null;
   dataLoaded = false;
+  filterText ="";
+
   constructor(private carService : CarService,
     private activatedRoute : ActivatedRoute) { }
 
@@ -57,6 +59,23 @@ export class CarComponent implements OnInit {
   clearCurrentCar(){
     this.currentCar=null;
   }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   // getCarsByCategory(categoryId : number){
   //   this.carService.getCarsByCategory(categoryId).subscribe((response) => {

@@ -34,6 +34,9 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+
 
 
 
@@ -63,7 +66,9 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CarAddComponent,
     ColorAddComponent,
     BrandAddComponent,
-    LoginComponent,
+    LoginComponent,   
+    FilterCarPipe, CategoryAddComponent,
+  
     
     
 

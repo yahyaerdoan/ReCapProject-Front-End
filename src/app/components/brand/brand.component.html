@@ -1,49 +1,131 @@
-<div *ngIf="dataLoaded==false" class="spinner-grow text-warning" role="status">
+<nav id="brands" class="navbar navbar-light bg-light px-3">
+  <a class="navbar-brand"
+    ><h5><font color="red">Markalar</font></h5></a
+  >
+  <div
+    *ngIf="dataLoaded == false"
+    class="spinner-grow text-warning"
+    role="status"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div class="mb-3">
+    <label for="filterText" class="form-label"><h6>Marka Sorgula!</h6></label>
+
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="marka sorgula"
+      placeholder="sorgula!"
+    />
+  </div>
+  <div *ngIf="filterText" class="alert alert-success">
+    {{ filterText }} sorguladınız!
+  </div>
+</nav>
+
+<div style="height: 125px; overflow-x: hidden; overflow-y: scroll">
+  <ul *ngIf="dataLoaded == true" class="list-group">
+    <li
+      (click)="clearCurrentBrand()"
+      [class]="getAllBrandClass()"
+      routerLink="/cars"
+      class="list-group-item"
+    >
+      <th>Markalar</th>
+    </li>
+    <li
+      (click)="setCurrentBrand(brand)"
+      routerLink="/cars/brand/{{ brand.brandId }}"
+      *ngFor="let brand of brands | filterBrand: filterText"
+      [class]="getCurrentBrandClass(brand)"
+    >
+      {{ brand.brandName }}
+    </li>
+  </ul>
+</div>
+<br />
+<h6 *ngIf="currentBrand">{{ currentBrand.brandName }} paketi seçtiniz!</h6>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div
+  *ngIf="dataLoaded == false"
+  class="spinner-grow text-warning"
+  role="status"
+>
   <span class="visually-hidden">Loading...</span>
 </div>
 
 <div class="mb-3">
   <label for="filterText" class="form-label"><h6>Marka Sorgula</h6></label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="marka sorgula" placeholder="sorgulama ifadesi giriniz">
-</div> 
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="marka sorgula"
+    placeholder="sorgulama ifadesi giriniz"
+  />
+</div>
 <div *ngIf="filterText" class="alert alert-success">
-  {{filterText}} sorguladınız!
+  {{ filterText }} sorguladınız!
 </div>
 
 <label class="form-label"><h6>Markalar</h6></label>
-<select  #selectBrand (change)="selectBrandChange(selectBrand.value)" class="form-select" aria-label="Default select example">
-      <option>Markalar</option>
-      <option (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" 
-      *ngFor="let brand of brands | filterBrand: filterText" [value]="brand.brandId">{{ brand.brandName }}</option>
-    </select>
-    <h6 *ngIf="currentBrand">{{currentBrand.brandName}} markayı seçtiniz!</h6>
+<select
+  #selectBrand
+  (change)="selectBrandChange(selectBrand.value)"
+  class="form-select"
+  aria-label="Default select example"
+>
+  <option>Markalar</option>
+  <option
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{ brand.brandId }}"
+    *ngFor="let brand of brands | filterBrand: filterText"
+    [value]="brand.brandId"
+  >
+    {{ brand.brandName }}
+  </option>
+</select>
+<h6 *ngIf="currentBrand">{{ currentBrand.brandName }} markayı seçtiniz!</h6> -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <label class="form-label"><h6>Markalar</h6></label>
+<!-- <label class="form-label"><h6>Markalar</h6></label>
   <select  *ngIf="dataLoaded==true" class="list-group" class="form-select" [(ngModel)]="currentBrand" aria-label="Default select example">
     <option selected (click)="clearCurrentBrand()" [class]="getAllBrandClass()"   routerLink = "/cars"  class="list-group-item"><th>Markalar</th></option>
     <option (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.brandId}}" *ngFor="let brand of brands | filterBrand: filterText" [class]="getCurrentBrandClass(brand)">{{brand.brandName}}</option>
   </select>
     -->
-
-
-
-
 
 <!-- <ul *ngIf="dataLoaded==true" class="list-group">
   <li (click)="clearCurrentBrand()" [class]="getAllBrandClass()"   routerLink = "/cars"  class="list-group-item"><th>Markalar</th></li>

@@ -1,75 +1,51 @@
-<div>
-  <div *ngIf="dataLoaded==false" class="spinner-grow text-warning" role="status">
-  <span class="visually-hidden">Loading...</span>
+<nav id="brands" class="navbar navbar-light bg-light px-3">
+  <a class="navbar-brand"
+    ><h5><font color="red">Araçlar</font></h5></a
+>
+
+  <div
+    *ngIf="dataLoaded == false"
+    class="spinner-grow text-warning"
+    role="status"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
+  <div class="mb-3">
+    <label for="filterText" class="form-label"><h6>Marka Sorgula!</h6></label>
+
+    <input
+      type="text"
+      [(ngModel)]="filterText"
+      class="form-control"
+      id="araç sorgula"
+      placeholder="sorgula!"
+    />
+  </div>
+  <div *ngIf="filterText" class="alert alert-success">
+    {{ filterText }} sorguladınız!
+  </div>
+</nav>
+
+<div style="height: 125px; overflow-x: hidden; overflow-y: scroll">
+  <ul *ngIf="dataLoaded == true" class="list-group">
+    <li
+      (click)="clearCurrentCar()"
+      [class]="getAllCarClass()"
+      routerLink="/cars"
+      class="list-group-item"
+    >
+      <th>Araçlar</th>
+    </li>
+    <li
+      (click)="setCurrentCar(car)"
+      routerLink="/cars/image/{{ car.carId }}"
+      *ngFor="let car of cars | filterCar: filterText"
+      [class]="getCurrentCarClass(car)"
+    >
+      {{ car.carName }}
+    </li>
+  </ul> 
 </div>
-<ul *ngIf="dataLoaded==true" class="list-group">
-  <li (click)="clearCurrentCar()" [class]="getAllCarClass()"   routerLink = "/cars"  class="list-group-item"><th>Araçlar</th></li>
-  <li (click)="setCurrentCar(car)" routerLink = "/cars/image/{{car.carId}}" *ngFor="let car of cars" [class]="getCurrentCarClass(car)">{{car.carName}}</li>
-</ul>
-<h6 *ngIf="currentCar">{{currentCar.carName}} aracı seçtiniz!</h6>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div *ngIf="dataLoaded == false" class="spinner-grow text-warning" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-<div *ngIf="dataLoaded == true" class="car"> <th>Araç Listesi</th>
-</div>
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <th>Id No</th>
-      <th> İsim</th>
-      <th> Marka No</th>
-      <th> Renk No</th>
-      <th> Kategori No</th>
-      <th> Model Yılı</th>
-      <th> Günlük Fiyatı</th>
-      <th> Bilgileri</th>
-    </tr>
-  </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.carId }}</td>
-    <td>{{ car.carName }}</td>
-    <td>{{ car.brandId }}</td>
-    <td>{{ car.colorId }}</td>
-    <td>{{ car.categoryId }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
-    <td>{{ car.description }}</td>
-  </tr>
-</table>
-
-</div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br/>
+<h6 *ngIf="currentCar">{{ currentCar.carName }} aracı seçtiniz!</h6>

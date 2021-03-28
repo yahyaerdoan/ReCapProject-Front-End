@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Color } from '../models/color';
 import { listResponseModel } from '../models/listResponseModel';
+import { responseModel } from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,15 @@ import { listResponseModel } from '../models/listResponseModel';
 export class ColorService {
 
 
-  apiUrl = 'https://localhost:44339/api/colors/getall';
+  apiUrl = "https://localhost:44339/api/colors";
 
   constructor(private httpClient : HttpClient) { }
   getColors(): Observable<listResponseModel<Color>>{
-    return this.httpClient.get<listResponseModel<Color>>(this.apiUrl);
+    let newPath = this.apiUrl + '/getall';
+    return this.httpClient.get<listResponseModel<Color>>(newPath);
+  }
+  add(color : Color):  Observable<responseModel> {
+    let newPath = this.apiUrl + "/add";
+    return this.httpClient.post<responseModel>(newPath, color)
   }
 }

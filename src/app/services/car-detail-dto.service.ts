@@ -32,12 +32,5 @@ export class CarDetailDtoService {
   getCarsByColor(colorId : number): Observable<listResponseModel<CarDetailDto>> {
     let newPath = this.apiUrl + '/GetCarsDetailsByColorId?colorId=' + colorId;
     return this.httpClient.get<listResponseModel<CarDetailDto>>(newPath);
-  }
-
-  
-
-  // getImagesByCar(carId : number): Observable<listResponseModel<CarDetailDto>> {
-  // let newPath = this.apiUrl + '/getimagebycarid?carId=' + carId;
-  // return this.httpClient.get<listResponseModel<CarDetailDto>>(newPath);
-  // }
+  }  
 }
