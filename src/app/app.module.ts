@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +31,9 @@ import { RentSummaryComponent } from './components/rent-summary/rent-summary.com
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 
@@ -60,6 +63,7 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
     CarAddComponent,
     ColorAddComponent,
     BrandAddComponent,
+    LoginComponent,
     
     
 
@@ -76,7 +80,9 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [{ //önce bütün servisler için global TTP_INTERCEPTORS yapıyoruz.
+    provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi : true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

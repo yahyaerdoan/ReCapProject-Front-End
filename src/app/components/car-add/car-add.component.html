@@ -15,40 +15,50 @@
                     </div>
                    
                     <div class="mb-3">
-                        <label for="categoryName"><h6>Kategori</h6></label>
+                        <label for="categoryId"><h6>Kategori</h6></label>
                         <div class="form-group">
-                            <input type="text" 
-                            id="categoryName" 
-                            formControlName="categoryName" class="form-control" 
+                            <input type="number" 
+                            id="categoryId" 
+                            formControlName="categoryId" class="form-control" 
                             placeholder="kategori"/>
                         </div>
                     </div>
 
                    <div class="mb-3">
-                    <label for="brandName"><h6>Marka</h6></label>
+                    <label for="brandId"><h6>Marka</h6></label>
+                    <div class="form-group">
+                        <input type="number" 
+                        id="brandId" 
+                        formControlName="brandId" class="form-control" 
+                        placeholder="marka"/>
+                    </div>
+                   </div>
+
+                   <div class="mb-3">
+                    <label for="brandModel"><h6>Model</h6></label>
                     <div class="form-group">
                         <input type="text" 
-                        id="brandName" 
-                        formControlName="brandName" class="form-control" 
-                        placeholder="marka"/>
+                        id="brandModel" 
+                        formControlName="brandModel" class="form-control" 
+                        placeholder="model"/>
                     </div>
                    </div>
 
                    
 
                    <div class="mb-3">
-                    <label for="colorName"><h6>Renk</h6></label>
-                    <!-- <div class="form-group">
-                        <input type="text" 
-                        id="colorName" 
-                        formControlName="colorName" class="form-control" 
+                    <label for="colorId"><h6>Renk</h6></label>
+                    <div class="form-group">
+                        <input type="number" 
+                        id="colorId" 
+                        formControlName="colorId" class="form-control" 
                         placeholder="renk"/>
-                    </div> -->
-                    <select #selectBrand (change)="selectColorChange(selectBrand.value)"
+                    </div>
+                    <!-- <select #selectBrand (change)="selectColorChange(selectBrand.value)"
                      class="form-select form-select-lg" aria-label=".form-select-lg example">
                      <option selected value="0">Renkler</option>
                      <option *ngFor="let color of colors" [value]="color.colorId">{{ color.colorName }}</option>
-                    </select>
+                    </select> -->
                    </div>
 
                    <div class="mb-3">

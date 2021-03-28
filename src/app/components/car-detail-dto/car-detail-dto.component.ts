@@ -74,7 +74,6 @@ export class CarDetailDtoComponent implements OnInit {
       else {
         this.toastrService.success("Kiralama Sepetine Eklendi", carDetailDto.carName);
         this.rentService.addToRent(carDetailDto);
-      }
-    
+      }    
     }  
 }

@@ -42,10 +42,10 @@ export class CarAddComponent implements OnInit {
 
   createCarAddForm(){
     this.carAddForm = this.formBuilder.group({
-      categoryName : ["", Validators.required],
+      categoryId : ["", Validators.required],
       carName : ["", Validators.required],
-      brandName : ["", Validators.required],
-      //brandModel : ["", Validators.required],
+      brandId : ["", Validators.required],
+      brandModel : ["", Validators.required],
       colorId : ["", Validators.required],      
       modelYear : ["", Validators.required],
       dailyPrice : ["", Validators.required],
@@ -70,9 +70,9 @@ export class CarAddComponent implements OnInit {
 
   add(){
     if(this.carAddForm.valid){
-      this.carAddForm.addControl("brandId",new FormControl(this.carAddForm.get("brand").value.brandId, Validators.required))
-      this.carAddForm.addControl("colorId",new FormControl(this. selectedColor , Validators.required))
-      this.carAddForm.addControl("categoryId",new FormControl(this.carAddForm.get("category").value.categoryId, Validators.required))
+      //this.carAddForm.addControl("brandId",new FormControl(this.carAddForm.get("brand").value.brandId, Validators.required))
+      //this.carAddForm.addControl("colorId",new FormControl(this. selectedColor , Validators.required))
+      //this.carAddForm.addControl("categoryId",new FormControl(this.carAddForm.get("category").value.categoryId, Validators.required))
       let carModel = Object.assign({},this.carAddForm.value)
       this.carService.add(carModel).subscribe(response =>{        
         this.toastrService.success(response.message, "Başarılı")

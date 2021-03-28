@@ -4,6 +4,8 @@ import { CarAddComponent } from './components/car-add/car-add.component';
 import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dto.component';
 import { CarDetailImageComponent } from './components/car-detail-image/car-detail-image.component';
 import { CarComponent } from './components/car/car.component';
+import { LoginComponent } from './components/login/login.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path : "",pathMatch : "full", component : CarDetailDtoComponent},
@@ -13,7 +15,8 @@ const routes: Routes = [
   {path : "cars/image/:carId", component : CarDetailImageComponent},
   {path : "cars/brand/:brandId", component : CarDetailDtoComponent},
   {path : "cars/color/:colorId", component : CarDetailDtoComponent},
-  {path : "cars/add", component : CarAddComponent},
+  {path : "cars/add", component : CarAddComponent , canActivate : [LoginGuard]},
+  {path : "login", component : LoginComponent},
 ];
 
 @NgModule({
