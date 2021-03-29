@@ -22,4 +22,8 @@ export class CategoryService {
     let newPath = this.apiUrl + "/add";
     return this.httpClient.post<responseModel>(newPath, category)
   }
+  update(category : Category):  Observable<responseModel> {
+    let newPath = this.apiUrl + "/update";
+    return this.httpClient.put<responseModel>(newPath, category)
+  }
 }

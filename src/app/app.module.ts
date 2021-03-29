@@ -36,6 +36,10 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FilterCarPipe } from './pipes/filter-car.pipe';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CatrgoryUpdateComponent } from './components/catrgory-update/catrgory-update.component';
 
 
 
@@ -67,7 +71,7 @@ import { CategoryAddComponent } from './components/category-add/category-add.com
     ColorAddComponent,
     BrandAddComponent,
     LoginComponent,   
-    FilterCarPipe, CategoryAddComponent,
+    FilterCarPipe, CategoryAddComponent, BrandUpdateComponent, ColorUpdateComponent, CarUpdateComponent, CatrgoryUpdateComponent,
   
     
     

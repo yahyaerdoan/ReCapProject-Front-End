@@ -43,7 +43,7 @@
           <li class="list-group-item">Marka : {{ carDetailDto.brandName }}</li>
           <li class="list-group-item">Renk : {{ carDetailDto.colorName }}</li>
           <li class="list-group-item">Model Yılı : {{ carDetailDto.modelYear }}</li>
-          <li class="list-group-item">Günlük Ücret : {{ carDetailDto.dailyPrice }}
+          <li class="list-group-item">Günlük Ücret : {{ carDetailDto.dailyPrice | currency: "TRY" :"₺"}}
           </li>
         </ul>
         <div class="card-body">
