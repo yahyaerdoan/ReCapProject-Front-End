@@ -48,16 +48,17 @@ export class CarDetailDtoComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      if(params["categoryId"]){this.getCarsDetailsByCategory(params["categoryId"])}
+      if(params["categoryId"], params["carId"], params["brandId"], params["colorId"])
+      {this.getFilterCars(params["categoryId"], params["carId"], params["brandId"], params["colorId"])} 
+
+      else if(params["categoryId"]){this.getCarsDetailsByCategory(params["categoryId"])}
       else if(params["carId"]){this.getCarsDetailsByCar(params["carId"]);}      
       else if(params["brandId"]){this.getCarsDetailsByBrand(params["brandId"])}
       else if(params["colorId"]){this.getCarsDetailsByColor(params["colorId"])}
 
-      else if(params["categoryId"] &&params["carId"] &&params["brandId"] &&params["colorId"])
-      {this.getFilterCars(params["categoryId"], params["carId"], params["brandId"], params["colorId"])}     
+      else{this.getCarDetailDtos()}      
       
     });
-    this.getCarDetailDtos(); 
     this.getColors();
     this.getBrands();  
     this.getCars();  
@@ -70,7 +71,6 @@ export class CarDetailDtoComponent implements OnInit {
       this.dataLoaded = true;      
     });
   }
-
   getCarsDetailsByCategory(categoryId : number){
     this.carDetailDtoService.getCarsByCategory(categoryId).subscribe((response) => {
       this.carDetailDtos = response.data;
@@ -110,7 +110,6 @@ export class CarDetailDtoComponent implements OnInit {
       this.brands = response.data;
     });
   }
-
   getColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
@@ -119,16 +118,18 @@ export class CarDetailDtoComponent implements OnInit {
   getFilterCars(categoryId : number, carId : number, brandId : number, colorId : number){
     this.carDetailDtoService.getFilterCars(categoryId, carId, brandId, colorId).subscribe((response)=>{
       this.carDetailDtos = response.data;
-      console.log(response)
+      this.dataLoaded =true
       if (this.carDetailDtos.length ==0) {
         this.toastrService.error("Herhangi bir eşleşme bulunamadı!")        
+      }
+      else {
+        this.toastrService.success("Filitreleme Listelendi");        
       }
     });
   }
   getSelectedCategoryId(categoryId : number) {
     if(this.categoryId == categoryId)
-    {
-      console.log(this.categoryId);
+    {     
       return true;
     }
     else
@@ -139,8 +140,7 @@ export class CarDetailDtoComponent implements OnInit {
 
   getSelectedCarId(carId : number) {
     if(this.carId == carId)
-    {
-      console.log(this.carId);
+    {      
       return true;
     }
     else
@@ -150,9 +150,7 @@ export class CarDetailDtoComponent implements OnInit {
   }
   getSelectedColorId(colorId : number) {
     if(this.colorId == colorId)
-    {
-      
-      console.log(this.colorId);
+    {  
       return true;
     }
     else
@@ -164,7 +162,6 @@ export class CarDetailDtoComponent implements OnInit {
   getSelectedBrandId(brandId : number) {
     if(this.brandId == brandId)
     {
-      console.log(this.brandId);
       return true;
     }
     else
