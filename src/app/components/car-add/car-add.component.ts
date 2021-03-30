@@ -14,20 +14,17 @@ import { ColorService } from 'src/app/services/color.service';
   templateUrl: './car-add.component.html',
   styleUrls: ['./car-add.component.css']
 })
-export class CarAddComponent implements OnInit {
+export class CarAddComponent implements OnInit {  
 
-  carAddForm : FormGroup;
   categories : Category[];
   brands : Brand[];
   colors : Color[];
-
-  selectedCategory : Category;
-  selectedBrand : Brand;
-  selectedColor : number;
+  carAddForm : FormGroup;
+  
   
   constructor( private formBuilder : FormBuilder,
     private carService : CarService,
-    private categoriyService : CategoryService,
+    private categoryService : CategoryService,
     private brandService : BrandService,
     private colorService :ColorService,
     private toastrService : ToastrService,) { }
@@ -37,10 +34,8 @@ export class CarAddComponent implements OnInit {
     this.getCategories();
     this.getBrands();
     this.getColors();
-
   }
-
-  createCarAddForm(){
+    createCarAddForm(){
     this.carAddForm = this.formBuilder.group({
       categoryId : ["", Validators.required],
       carName : ["", Validators.required],
@@ -53,7 +48,7 @@ export class CarAddComponent implements OnInit {
     })
   }
   getCategories(){
-    this.categoriyService.getCategories().subscribe(response => {
+    this.categoryService.getCategories().subscribe(response => {
       this.categories = response.data
     })
   }
@@ -67,14 +62,11 @@ export class CarAddComponent implements OnInit {
       this.colors = response.data
     })
   }
-
   add(){
-    if(this.carAddForm.valid){
-      //this.carAddForm.addControl("brandId",new FormControl(this.carAddForm.get("brand").value.brandId, Validators.required))
-      //this.carAddForm.addControl("colorId",new FormControl(this. selectedColor , Validators.required))
-      //this.carAddForm.addControl("categoryId",new FormControl(this.carAddForm.get("category").value.categoryId, Validators.required))
+    if(this.carAddForm.valid){     
       let carModel = Object.assign({},this.carAddForm.value)
-      this.carService.add(carModel).subscribe(response =>{        
+      this.carService.add(carModel).subscribe(response =>{ 
+        console.log(response)       
         this.toastrService.success(response.message, "Başarılı")
       },responseError=>{
         if(responseError.error.ValidationErrors.length>0){
@@ -87,10 +79,5 @@ export class CarAddComponent implements OnInit {
     else{
       this.toastrService.error("Formunuz  Eksik", "Dikkat")
     }     
-  }
-  selectColorChange(selectColor: string) {
-    this.selectedColor = parseInt(selectColor);
-    console.log(selectColor);
-  }
+  }  
 }
-//this.carAddForm.get("color").value.colorId
