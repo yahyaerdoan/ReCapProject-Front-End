@@ -1,0 +1,54 @@
+<div class="content">
+    <div class="col-md-2">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Kategori Güncelle</h5></div>
+        <div class="card-body">
+          <form [formGroup]="categoryUpdateForm">
+            <div class="mb-3">
+              <label for="categoryId"><h6>Kategori No</h6></label>
+  
+              <select
+                class="form-select"
+                formControlName="categoryId"
+                aria-placeholder="categoryId"
+              >
+                <option
+                  *ngFor="let category of categories"
+                  [value]="category.categoryId"
+                  [selected]="getSelectedCategoryId(category.categoryId)"
+                >
+                  {{ category.categoryId }}
+                </option>
+              </select>            
+            </div>
+
+            <div class="mb-3">
+              <label for="categoryName"><h6>Kategori</h6></label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="categoryName"
+                  formControlName="categoryName"
+                  class="form-control"
+                  placeholder="kategori ismi"
+                />
+              </div>
+            </div>
+  
+           
+          </form>
+        </div>
+        <div class="card-footer">
+          <button type="button"
+          class="btn btn-outline-info"
+          style="margin-right: 5px" (click)="update()">
+            Güncelle
+          </button>
+          <button routerLink="/categories/list" type="button" class="btn btn-outline-primary">
+            Geri
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

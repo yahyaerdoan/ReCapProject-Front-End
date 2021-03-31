@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{FormGroup,FormBuilder,FormControl,Validators} from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
@@ -11,26 +12,32 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandUpdateComponent implements OnInit {
 
+  dataLoaded = false;
   brandUpdateForm : FormGroup;
   brands:Brand[] = [];
+  brandId : number;
+  selectedBrand : Brand
 
-  constructor(private formBuilder:FormBuilder, private brandService: BrandService,
+  constructor(private formBuilder:FormBuilder, 
+    private brandService: BrandService,
+    private activatedRoute: ActivatedRoute,
     private toastrService:ToastrService) { }
 
-  ngOnInit(): void {
-    this.createBrandUpdateForm();
+  ngOnInit(): void {    
     this.getAllBrands();
+    this.createBrandUpdateForm();  
   }
   getAllBrands()
   {
     this.brandService.getBrands().subscribe(response =>{
       this.brands = response.data;
+      this.dataLoaded = response.success
     });
   }
   createBrandUpdateForm()
   {
     this.brandUpdateForm = this.formBuilder.group({
-      brandId : ["",Validators.required],
+      brandId : [this.selectedBrand?.brandId, Validators.required],
       brandName : ["",Validators.required],
       brandModel : ["",Validators.required],
     });
@@ -50,6 +57,22 @@ export class BrandUpdateComponent implements OnInit {
     }
     else{
       this.toastrService.error("Formunuz  Eksik", "Dikkat")   
+    }
+  }
+
+  setSelectedBrand(brand:Brand){
+    this.selectedBrand = brand;
+     
+  } 
+  
+  getSelectedBrandId(brandId : number) {
+    if(this.brandId == brandId)
+    {  
+      return true;
+    }
+    else
+    {
+      return false;
     }
   }
 }

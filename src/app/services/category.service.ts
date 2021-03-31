@@ -26,4 +26,9 @@ export class CategoryService {
     let newPath = this.apiUrl + "/update";
     return this.httpClient.put<responseModel>(newPath, category)
   }
+  delete(category : Category):Observable<responseModel>{    
+    let newPath = this.apiUrl + "/delete";      
+    return this.httpClient.put<responseModel>(newPath, category);
+    
+  }
 }

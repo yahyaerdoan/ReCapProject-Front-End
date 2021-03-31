@@ -39,7 +39,11 @@ import { CategoryAddComponent } from './components/category-add/category-add.com
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
-import { CatrgoryUpdateComponent } from './components/catrgory-update/catrgory-update.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { CategoryUpdateComponent } from './components/category-update/category-update.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { ColorListComponent } from './components/color-list/color-list.component';
 
 
 
@@ -71,7 +75,14 @@ import { CatrgoryUpdateComponent } from './components/catrgory-update/catrgory-u
     ColorAddComponent,
     BrandAddComponent,
     LoginComponent,   
-    FilterCarPipe, CategoryAddComponent, BrandUpdateComponent, ColorUpdateComponent, CarUpdateComponent, CatrgoryUpdateComponent,
+    FilterCarPipe, 
+    CategoryAddComponent, 
+    BrandUpdateComponent, 
+    ColorUpdateComponent, 
+    CarUpdateComponent, 
+    BrandListComponent, 
+    CategoryListComponent, 
+    CategoryUpdateComponent, CarListComponent, ColorListComponent,
   
     
     

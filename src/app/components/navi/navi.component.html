@@ -1,27 +1,112 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Yahya ERDOĞAN Araç Kiralama</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-         <app-rent-summary>            
-         </app-rent-summary>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Yahya Erdoğan & Rent A Car Project</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/cars"
+            >Ana Sayfa</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <app-rent-summary> </app-rent-summary>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Liste
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" routerLink="/categories/list"><h6>Kategori Listesi</h6></a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/cars/list"><h6>Araç Listesi</h6></a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/brands/list"><h6>Marka Listesi</h6></a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/colors/list"><h6>Renk Listesi</h6></a
+              >
+            </li>          
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Ekle
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">            
+            <li>
+              <a class="dropdown-item" routerLink="/categories/add"><h6>Kategori Ekle</h6></a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/cars/add"><h6>Araç Ekle</h6></a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/brands/add"><h6>Marka Ekle</h6></a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/colors/add"><h6>Renk Ekle</h6></a>
+            </li>
+          </ul>
+        </li>
+
+
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">LOKASYONLAR</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <button
+          class="btn btn-outline-success me-3"
+          class="rounded-pill"
+          type="submit"
+          class="login-btn"
+        >
+          ÜYE GİRİŞİ
+        </button>
+        <button
+          class="btn btn-outline-success"
+          class="rounded-pill"
+          type="submit"
+          class="signup-btn"
+        >
+          ÜYE OL
+        </button>
+      </form>
     </div>
-  </nav>
+  </div>
+</nav>
