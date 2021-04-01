@@ -8,4 +8,5 @@ export interface RentalDetailDto {
     companyName : string;
     rentDate : Date;
     returnDate : Date;
+    dailyPrice : number;    
 }

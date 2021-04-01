@@ -8,6 +8,7 @@ import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dt
 import { CarDetailImageComponent } from './components/car-detail-image/car-detail-image.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { CardListComponent } from './components/card-list/card-list.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { CategoryUpdateComponent } from './components/category-update/category-update.component';
@@ -42,12 +43,15 @@ const routes: Routes = [
   {path : "brands/update/:brandId",component:BrandUpdateComponent},
   {path : "categories/update/:categoryId",component:CategoryUpdateComponent},
   {path : "cars/update/:carId",component:CarUpdateComponent},
-  {path : "cplors/update/:colorId",component:ColorUpdateComponent},
+  {path : "colors/update/:colorId",component:ColorUpdateComponent},
 
   {path : "brands/list",component: BrandListComponent },
   {path : "categories/list",component: CategoryListComponent },
   {path : "colors/list",component: ColorListComponent },
   {path : "cars/list",component: CarListComponent },
+
+  {path : "cardlist",component: CardListComponent },
+  {path : "cars/image/:carId/cardlist",component: CardListComponent },
 
   {path : "cars/filter/:brandId/:colorId/:categoryId/:carId", component:CarDetailDtoComponent},
 ];

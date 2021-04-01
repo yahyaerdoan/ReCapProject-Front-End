@@ -23,152 +23,169 @@
     </div>
 
     <!-- Filter section start-->
-    <div class="content"> 
-    <div class="row mb-2">      
-      <div class="col col-2">        
-        <label class="mr-sm-2" for="inlineFormCustomSelect"><h6>Kategoriler</h6></label>
-        <select
-        class="form-select"
-          [(ngModel)]="categoryId"
-          aria-placeholder="Tüm Kategoriler"
-        >
-          <option selected>Kategoriler</option>
-          <option
-            *ngFor="let category of categories"
-            [value]="category.categoryId"
-            [selected]="getSelectedCategoryId(category.categoryId)"
+    <div class="content">
+      <div class="row mb-2">
+        <div class="col col-2">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"
+            ><h6>Kategoriler</h6></label
           >
-            {{ category.categoryName }}
-          </option>
-        </select>
-      </div>
-   
-    
-      <div class="col col-2"> 
-        <label class="mr-sm-2" for="inlineFormCustomSelect"><h6>Araçlar</h6></label>
-        <select
-        class="form-select"
-          [(ngModel)]="carId"
-          aria-placeholder="Tüm Araçlar"
-        >
-          <option selected>Araçlar</option>
-          <option
-            *ngFor="let car of cars"
-            [value]="car.carId"
-            [selected]="getSelectedCarId(car.carId)"
+          <select
+            class="form-select"
+            [(ngModel)]="categoryId"
+            aria-placeholder="Tüm Kategoriler"
           >
-            {{ car.carName }}
-          </option>
-        </select>
-      </div> 
-   
-
-      <div class="col col-2"> 
-        <label class="mr-sm-2" for="inlineFormCustomSelect"><h6>Markalar</h6>  </label>
-        <select
-          class="form-select"
-          [(ngModel)]="brandId"
-          aria-placeholder="Tüm Markalar"
-        >
-          <option selected>Markalar</option>
-          <option
-            [value]="brand.brandId"
-            *ngFor="let brand of brands"
-            [selected]="getSelectedBrandId(brand.brandId)"
-          >
-            {{ brand.brandName }}
-          </option>
-        </select>
-      </div>
-
-      <div class="col col-2"> 
-        <label class="mr-sm-2" for="inlineFormCustomSelect"><h6>Renkler</h6>  </label>
-        <select
-        class="form-select"
-          [(ngModel)]="colorId"
-          aria-placeholder="Tüm Renkler"
-        >
-          <option selected>Renkler</option>
-          <option
-            *ngFor="let color of colors"
-            [value]="color.colorId"
-            [selected]="getSelectedColorId(color.colorId)"
-          >
-            {{ color.colorName }}
-          </option>
-        </select>
-      </div>
-      <div class="col col-2">
-        <br/>
-        <div class="btn-group">      
-        <button
-          class="btn btn-success"
-          routerLink="/cars/filter/{{ brandId }}/{{ colorId }}/{{categoryId}}/{{carId}}"          
-        >
-          Filitrele
-        </button>
-      </div>
-    </div>
-
-    <div class="col col-2">
-      <br/>
-      <div class="btn-group">
-        <button routerLink="/cars"
-        type="button"
-        class="btn btn-danger"
-        >
-          Temizle
-        </button>
-      </div>
-    </div>
-  </div>
-      <!-- Filter section end-->
-<br/>
-    <div *ngIf="dataLoaded == true" class="carDetailDto"></div>
-    <th>Araç Detay Listesi</th>
-    <table *ngIf="dataLoaded == true" class="table table-hover">
-      <thead>
-        <tr>
-          <th>Kategori</th>
-          <th>Araç İsmi</th>
-          <th>Marka</th>
-          <th>Model</th>
-          <th>Model Yılı</th>
-          <th>Renk</th>
-          <th>Günlük Fiyat</th>
-          <th>Kdv'li Günlük Fiyat</th>
-          <th>Araç Bilgileri</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="
-            let carDetailDto of carDetailDtos | filterCarDetailDto: filterText
-          "
-        >
-          <td>{{ carDetailDto.categoryName }}</td>
-          <td>{{ carDetailDto.carName }}</td>
-          <td>{{ carDetailDto.brandName }}</td>
-          <td>{{ carDetailDto.brandModel }}</td>
-          <td>{{ carDetailDto.modelYear }}</td>
-          <td>{{ carDetailDto.colorName }}</td>
-          <td>{{ carDetailDto.dailyPrice | currency: "TRY":"₺" }}</td>
-          <td>
-            {{ carDetailDto.dailyPrice | vatAdded: 18 | currency: "TRY":"₺" }}
-          </td>
-          <td>{{ carDetailDto.description }}</td>
-          <td>
-            <button
-              (click)="addToRent(carDetailDto)"
-              type="button"
-              class="btn btn-success"
+            <option selected>Kategoriler</option>
+            <option
+              *ngFor="let category of categories"
+              [value]="category.categoryId"
+              [selected]="getSelectedCategoryId(category.categoryId)"
             >
-              Kirala
+              {{ category.categoryName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col col-2">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"
+            ><h6>Araçlar</h6></label
+          >
+          <select
+            class="form-select"
+            [(ngModel)]="carId"
+            aria-placeholder="Tüm Araçlar"
+          >
+            <option selected>Araçlar</option>
+            <option
+              *ngFor="let car of cars"
+              [value]="car.carId"
+              [selected]="getSelectedCarId(car.carId)"
+            >
+              {{ car.carName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col col-2">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"
+            ><h6>Markalar</h6>
+          </label>
+          <select
+            class="form-select"
+            [(ngModel)]="brandId"
+            aria-placeholder="Tüm Markalar"
+          >
+            <option selected>Markalar</option>
+            <option
+              [value]="brand.brandId"
+              *ngFor="let brand of brands"
+              [selected]="getSelectedBrandId(brand.brandId)"
+            >
+              {{ brand.brandName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col col-2">
+          <label class="mr-sm-2" for="inlineFormCustomSelect"
+            ><h6>Renkler</h6>
+          </label>
+          <select
+            class="form-select"
+            [(ngModel)]="colorId"
+            aria-placeholder="Tüm Renkler"
+          >
+            <option selected>Renkler</option>
+            <option
+              *ngFor="let color of colors"
+              [value]="color.colorId"
+              [selected]="getSelectedColorId(color.colorId)"
+            >
+              {{ color.colorName }}
+            </option>
+          </select>
+        </div>
+        <div class="col col-2">
+          <br />
+          <div class="btn-group">
+            <button
+              class="btn btn-success"
+              routerLink="/cars/filter/{{ brandId }}/{{ colorId }}/{{
+                categoryId
+              }}/{{ carId }}"
+            >
+              Filitrele
             </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+
+        <div class="col col-2">
+          <br />
+          <div class="btn-group">
+            <button routerLink="/cars" type="button" class="btn btn-danger">
+              Temizle
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Filter section end-->
+      <br />
+      <div *ngIf="dataLoaded == true" class="carDetailDto"></div>
+      <th>Araç Detay Listesi</th>
+      <table *ngIf="dataLoaded == true" class="table table-hover">
+        <thead>
+          <tr>
+            <th>Kategori</th>
+            <th>Araç İsmi</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Model Yılı</th>
+            <th>Renk</th>
+            <th>Günlük Fiyat</th>
+            <th>Kdv'li Günlük Fiyat</th>
+            <th>Araç Bilgileri</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let carDetailDto of carDetailDtos | filterCarDetailDto: filterText
+            "
+          >
+            <td>{{ carDetailDto.categoryName }}</td>
+            <td>{{ carDetailDto.carName }}</td>
+            <td>{{ carDetailDto.brandName }}</td>
+            <td>{{ carDetailDto.brandModel }}</td>
+            <td>{{ carDetailDto.modelYear }}</td>
+            <td>{{ carDetailDto.colorName }}</td>
+            <td>{{ carDetailDto.dailyPrice | currency: "TRY":"₺" }}</td>
+            <td>
+              {{ carDetailDto.dailyPrice | vatAdded: 18 | currency: "TRY":"₺" }}
+            </td>
+            <td>{{ carDetailDto.description }}</td>
+            <div>
+              <td>
+                <button
+                  routerLink="/cars/image/{{ carDetailDto.carId }}"
+                  type="button"
+                  class="btn btn-primary"
+                >
+                  Detay
+                </button>
+                &nbsp;
+
+                <button
+                  (click)="addToRent(carDetailDto)"
+                  type="button"
+                  class="btn btn-success"
+                >
+                  Kirala
+                </button>
+              </td>
+            </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
