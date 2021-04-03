@@ -45,6 +45,7 @@ import { CategoryUpdateComponent } from './components/category-update/category-u
 import { CarListComponent } from './components/car-list/car-list.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { CardPaymentComponent } from './components/card-payment/card-payment.component';
 
 
 
@@ -83,7 +84,7 @@ import { CardListComponent } from './components/card-list/card-list.component';
     CarUpdateComponent, 
     BrandListComponent, 
     CategoryListComponent, 
-    CategoryUpdateComponent, CarListComponent, ColorListComponent, CardListComponent,
+    CategoryUpdateComponent, CarListComponent, ColorListComponent, CardListComponent, CardPaymentComponent,
   
     
     

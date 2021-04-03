@@ -163,6 +163,9 @@
               {{ carDetailDto.dailyPrice | vatAdded: 18 | currency: "TRY":"₺" }}
             </td>
             <td>{{ carDetailDto.description }}</td>
+
+            
+           
             <div>
               <td>
                 <button
@@ -178,6 +181,8 @@
                   (click)="addToRent(carDetailDto)"
                   type="button"
                   class="btn btn-success"
+                  routerLink="/cars/rentals/{{carDetailDto.carId }}"
+
                 >
                   Kirala
                 </button>
@@ -188,4 +193,7 @@
       </table>
     </div>
   </div>
+</div>
+<div class="d-grid gap-2 mb-2" *ngIf="isRented == false">
+  <app-rental [carforrental]="carDetailDto"></app-rental>
 </div>

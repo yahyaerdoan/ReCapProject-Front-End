@@ -1,8 +1,57 @@
-<ul class="list-group">
-    <li class="list-group-item"><th>Kiralanan Araçlar</th></li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
-    <li class="list-group-item">And a fifth one</li>
-  </ul>
+<div class="diveder" style="border: 1px solid grey; margin-top: 100px"></div>
+
+<div class="col-md-12" style="margin-bottom: 100px; margin-top: 50px">
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom01">Kiralama Tarihi</label>
+      <input
+        [(ngModel)]="rentdate"
+        class="form-control"
+        type="datetime-local"
+        value=""
+        id="rent_date"
+        required
+      />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom02">Teslim Tarihi</label>
+      <input
+        [(ngModel)]="returndate"
+        class="form-control"
+        type="datetime-local"
+        value=""
+        id="return_date"
+      />
+    </div>
+  </div>
+  <div class="form-row" style="width: 50%">
+    <label for="select_customer">Lütfen müşteri seçin</label>
+    <select
+      id="select_customer"
+      class="custom-select"
+      [(ngModel)]="customerId"
+      aria-placeholder="All Customers"
+      type="number"
+    >
+      <option
+        *ngFor="let customerDetailDto of customerDetailDtos"
+        type="number"
+        [value]="customerDetailDto.customerId"
+      >
+        {{ customerDetailDto.firstName }}
+      </option>
+    </select>
+  </div>
+  <div class="form-row" style="margin-top: 20px">
+    <span>
+      <span class="badge badge-warning">Warning</span> Lütfen ödeme yapmadan
+      önce kaydınızı onaylayın.</span
+    >
+  </div>
+  <div class="form-row" style="float: right; margin-top: 20px">
+    <button type="button" class="btn btn-success" (click)="addToRent(carDetailDto)">
+      Kirayı Onayla
+    </button>
+    <!-- <app-payment *ngIf="isRented" [rentForPayment]="rental"></app-payment> -->
+  </div>
+</div>

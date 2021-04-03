@@ -16,6 +16,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { LoginComponent } from './components/login/login.component';
+import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
@@ -49,6 +50,9 @@ const routes: Routes = [
   {path : "categories/list",component: CategoryListComponent },
   {path : "colors/list",component: ColorListComponent },
   {path : "cars/list",component: CarListComponent },
+
+  {path : "cars/rentals",component: RentalComponent },
+  {path : "cars/rentals/:carId",component: RentalComponent },
 
   {path : "cardlist",component: CardListComponent },
   {path : "cars/image/:carId/cardlist",component: CardListComponent },

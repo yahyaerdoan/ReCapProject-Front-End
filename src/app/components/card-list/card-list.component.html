@@ -1,4 +1,4 @@
-<!-- <div  *ngIf="rentItems.length>0" class="row">
+<div  class="row">
   <div class="">
     <div  *ngIf="dataLoaded == false" class="spinner-grow text-warning" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -41,16 +41,25 @@
               <button type="button" class="btn btn-success">Öde</button>
               &nbsp;
               <button (click)="removeFromRent(rentItem.carDetailDto)" type="button" class="btn btn-danger">Sil</button>
-            </td>
+            </td>           
           </tr>
+
+ <tr *ngIf="rentItems.length == 0">
+      <td colspan="8"  align="center"> <button type="button" class="btn btn-success" routerLink="/cars">Sepetinizde Ürün Bulunmamaktadır! Yeni Ürün İncelemek için Ana Sayfaya Gidiniz!</button></td>
+    </tr>
+
         </tbody>
       </table>
     </div>
   </div>
-</div> -->
+</div>
 
 
 
+
+
+
+<!-- 
 <div
   *ngIf="dataLoaded == false"
   class="spinner-border text-danger d-flex mx-auto"
@@ -100,7 +109,7 @@
   <div class="row">
     <div class="col-8">
       <h5>
-        <!-- Toplam Tutar : <strong>{{ cartTotal }}</strong> TL -->
+        Toplam Tutar : <strong>{{ cartTotal }}</strong> TL 
       </h5>
     </div>
     
@@ -108,4 +117,4 @@
       <button type="button"  class="btn btn-success float-right"> Ödeme </button>
     </div>
   </div>
-</div>
+</div> -->

@@ -12,6 +12,7 @@ export class RentalDetailDtoService {
   apiUrl = 'https://localhost:44339/api/rentals/getrentaldetails';
 
   constructor(private httpClient : HttpClient) { }
+  
   getRentalDetailDtos(): Observable<listResponseModel<RentalDetailDto>>{
     return this.httpClient.get<listResponseModel<RentalDetailDto>>(this.apiUrl);
   }

@@ -17,7 +17,7 @@ export class RentService {
     else{
       let rentItem = new RentItem(); //objesini oluşturduk
       rentItem.carDetailDto = carDetailDto;
-      rentItem.quantity =1;
+      //rentItem.quantity =1;
       RentItems.push(rentItem) //sepete ekler
     }
   }

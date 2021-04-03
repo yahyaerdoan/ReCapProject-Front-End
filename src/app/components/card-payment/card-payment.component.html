@@ -1,0 +1,74 @@
+<!-- <div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header"><h5 class="title">Payment</h5></div>
+        <div class="card-body">
+          <form [formGroup]="paymentAddForm">
+            <div class="row">
+              <div class="mb-3 col-md-6">
+                <label for="nameOnTheCard">Name On The Card</label>
+                <div class="form-group">
+                  <input type="text" id="nameOnTheCard" formControlName="nameOnTheCard" class="form-control"  placeholder="Name On The Card" />
+                </div>
+              </div>
+  
+              <div class="mb-3 col-md-6">
+                <label for="cardNumber">Card Number</label>
+                <div class="form-group">
+                  <input  type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19"  id="cardNumber" formControlName="cardNumber" class="form-control" placeholder="Card Number" />
+                </div>
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <label>Credit Card Expiration Date</label>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-3">
+  
+                    <select  name='dateMonth'class="form-select" id='dateMonth' formControlName='dateMonth' placeholder="Month">
+                      <option [ngValue]=1>January</option>
+                      <option [ngValue]=2>February</option>
+                      <option [ngValue]='03'>March</option>
+                      <option [ngValue]='04'>April</option>
+                      <option [ngValue]='05'>May</option>
+                      <option [ngValue]='06'>June</option>
+                      <option [ngValue]='07'>July</option>
+                      <option [ngValue]='08'>August</option>
+                      <option [ngValue]='09'>September</option>
+                      <option [ngValue]='10'>October</option>
+                      <option [ngValue]='11'>November</option>
+                      <option [ngValue]='12'>December</option>
+                    </select>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <select name='dateYear' class="form-select" formControlName="dateYear" id='dateYear' placeholder="Year">
+                      <option [ngValue]='21'>2021</option>
+                      <option [ngValue]='22'>2022</option>
+                      <option [ngValue]='23'>2023</option>
+                      <option [ngValue]='24'>2024</option>
+                      <option [ngValue]='25'>2025</option>
+                      <option [ngValue]='26'>2026</option>
+                      <option [ngValue]='27'>2027</option>
+                    </select>
+                  </div>
+  
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <input type="tel"  id="cvvCode" maxlength="3"  formControlName="cvvCode" class="form-control" placeholder="CVV" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-dark float-end" (click)="addPayment()" data-bs-dismiss="modal">
+            Add Payment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div> -->
