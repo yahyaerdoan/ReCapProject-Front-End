@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CustomerDetailDtoService } from 'src/app/services/customer-detail-dto.service';
 import { RentService } from 'src/app/services/rent.service';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-rental',
@@ -21,8 +22,8 @@ export class RentalComponent implements OnInit {
   
   dataLoaded = false;
   
-  carDetailDtos: CarDetailDto[] = [];
-  carDetailDto: CarDetailDto;
+  
+  selectedCar: CarDetailDto;
 
   rentalDetailDtos : RentalDetailDto[] = [];
   rentals: Rental[] = [];  
@@ -31,73 +32,88 @@ export class RentalComponent implements OnInit {
   rentdate:Date;
   returndate:Date;
   rental: Rental;
-  isRented:boolean = false;
+  
+  totalPrice:number;
 
-  @Input() carforrental:CarDetailDto;
+  
+
+  rentalForm: FormGroup;
+
   constructor(private rentalService:RentalService,
     private customerDetailDtoService : CustomerDetailDtoService,
     private rentalDetailDtoService : RentalDetailDtoService,
     private toastrService : ToastrService,
     private rentService : RentService,
-    private carDetailDtoService: CarDetailDtoService,) { }
+    private carDetailDtoService: CarDetailDtoService,
+    private activatedRoute : ActivatedRoute,
+    private formBuilder: FormBuilder) { }
 
 
   ngOnInit(): void {
-    this.getCarDetailDtos();
+    this.activatedRoute.params.subscribe(params => {
+      if(params["carId"]){
+        this.getCarsDetailsByCar(params["carId"]); 
+      }                     
+    });    
     this.getRentalDetailDtos(); 
     this.getCustomerDetails();   
+    this.createRentalForm();
   }
-  getCarDetailDtos() {
-    this.carDetailDtoService.getCarDetailDtos().subscribe((response) => {
-      this.carDetailDtos = response.data;
-      this.carDetailDto = response.data[0];
-      this.dataLoaded = true;
-    });
-  }
-  
+  getCarsDetailsByCar(carId : number){
+    this.carDetailDtoService.getCarsByCar(carId).subscribe((response) => {
+      this.selectedCar = response.data[0];
+      this.dataLoaded = true;      
+     })
+  }   
   getRentals() {
     this.rentalService.getRentals().subscribe(response => {
       this.rentals = response.data;
     })
   }
-
   getRentalDetailDtos(){
     this.rentalDetailDtoService.getRentalDetailDtos().subscribe((response) =>{
       this.rentalDetailDtos = response.data;
       this.dataLoaded = true;      
     });
   }
-
   getCustomerDetails(){
     this.customerDetailDtoService.getCustomerDetailDtos().subscribe((response) =>{
       this.customerDetailDtos = response.data;
     });
   }
-
-  addToRenth(){
-    let rent : Rental={
-      carId : this.carforrental.carId,
-      customerId : this.customerId,
-      rentDate : this.rentdate,
-      returnDate : this.rentdate,
-      dailyPrice: this.carforrental.dailyPrice
-    };
-    this.rental = rent;
-    this.isRented = true;
-    console.log(rent)
-    this.toastrService.success("kiralama başarılı ")
+    createRentalForm() {
+    this.rentalForm = this.formBuilder.group({
+      customerId: ['', Validators.required],
+      rentDate: ['', Validators.required],
+      carId: [''],
+      returnDate: ['', Validators.required],
+    })
   }
+  addToRent() {
 
-  addToRent(carDetailDto: CarDetailDto) {
-    if (carDetailDto.carId === 0) {
-      this.toastrService.error('Bu araç bulunmuyor');
+    if (this.rentalForm.valid) {
+      let rentalModel = Object.assign({}, this.rentalForm.value)
+      rentalModel.carName = this.selectedCar.carName
+      rentalModel.carId = this.selectedCar.carId
+      rentalModel.brandName = this.selectedCar.brandName
+      rentalModel.colorName = this.selectedCar.colorName
+      rentalModel.description = this.selectedCar.description
+      rentalModel.modelYear = this.selectedCar.modelYear
+      rentalModel.dailyPrice = this.selectedCar.dailyPrice
+      rentalModel.totalPrice =  this.totalPrice
+      this.toastrService.success('Kiralama Sepetine Eklendi', this.selectedCar.carName);
+      this.rentService.addToRent( rentalModel );        
     } else {
-      this.toastrService.success(
-        'Kiralama Sepetine Eklendi',
-        carDetailDto.carName
-      );
-      this.rentService.addToRent(carDetailDto);
+      this.toastrService.error("Formunuz Eksik","Hata")
     }
   }
-  
+  calcTotalPrice() {
+    let startDate = new Date(this.rentalForm.value.rentDate)
+    let endDate = new Date(this.rentalForm.value.returnDate)
+    if( isNaN(startDate.getDate()) || isNaN(endDate.getDate()) ){ this.totalPrice = 0 } 
+    else if ( startDate > endDate ) { this.totalPrice = 0 } 
+    else {
+      this.totalPrice = (endDate.getDate() - startDate.getDate()) * this.selectedCar.dailyPrice
+    }
+  }
 }

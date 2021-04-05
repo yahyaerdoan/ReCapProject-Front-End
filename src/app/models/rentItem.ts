@@ -1,21 +1,25 @@
 import { CarDetailDto } from "./car-detail-dto";
 
 export class RentItem{
-    carDetailDto : CarDetailDto;    
+        
 
-    // carId: number;
-     rentDate: Date;
-     returnDate: Date;
-    // carName:string;
-    // brandName: string;
-    // brandModel: string;
-    // colorName: string;
-    // modelYear: number;
-    // dailyPrice: number;
-    // totalPrice: number;
-    
-    //customerId: number;
+    carId : number;
+    carName : string;
 
-    quantity : number;
+    brandName : string;
+    brandModel : string;
+
+    modelYear : string;
+
+    colorName : string;
+
+    categoryName : string;
+    dailyPrice : number;
+
+    rentDate: Date;
+    returnDate: Date;
+ 
+    customerId: number;
+    totalPrice: number;
 
 }

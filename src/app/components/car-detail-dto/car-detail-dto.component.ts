@@ -12,6 +12,7 @@ import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { CarService } from 'src/app/services/car.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car-detail-dto',
@@ -35,7 +36,7 @@ export class CarDetailDtoComponent implements OnInit {
   filterText = '';
   dataLoaded = false;
 
-  isRented: boolean;
+  isCarAvail: boolean
 
   constructor(
     private carDetailDtoService: CarDetailDtoService,
@@ -45,7 +46,8 @@ export class CarDetailDtoComponent implements OnInit {
     private brandService: BrandService,
     private colorService: ColorService,
     private categoryService: CategoryService,
-    private carService: CarService
+    private carService: CarService,
+    private rentalService: RentalService,  
   ) {}
 
   ngOnInit(): void {
@@ -70,7 +72,10 @@ export class CarDetailDtoComponent implements OnInit {
         this.getCarsDetailsByBrand(params['brandId']);
       } else if (params['colorId']) {
         this.getCarsDetailsByColor(params['colorId']);
-      } else {
+      } else if (params["carId"]) {
+        //this.isCarAvailable(params["carId"]);        
+      }
+      else {
         this.getCarDetailDtos();
       }
     });
@@ -181,6 +186,7 @@ export class CarDetailDtoComponent implements OnInit {
     }
   }
   addToRent(carDetailDto: CarDetailDto) {
+   /*
     if (carDetailDto.carId === 0) {
       this.toastrService.error('Bu araç bulunmuyor');
     } else {
@@ -190,19 +196,17 @@ export class CarDetailDtoComponent implements OnInit {
       );
       this.rentService.addToRent(carDetailDto);
     }
-  }
-                 
-
-
-  
-  getRentalPage(isRented : boolean){
-    this.isRented = isRented;
-    if (this.isRented ==false) {
-      return true;
-    }
-    else{
-      this.toastrService.error("Seçtiğiniz araç şuan kiralama için müsait değildir!");
-      return false;
-    }
-  }
+    */
+  }  
+  // isCarAvailable(carId : number) {
+  //   this.rentalService.isCarAvailable(carId).subscribe(
+  //     response=>{        
+  //       this.isCarAvail = response
+  //     }, 
+  //     responseError=>
+  //     {
+  //       this.toastrService.info("Tercih Ettiğiniz Araç Henüz Müsait Değil!","Uyarı!")         
+  //     }
+  //   );
+  // }
 }

@@ -1,35 +1,40 @@
 <div class="diveder" style="border: 1px solid grey; margin-top: 100px"></div>
 
+<form [formGroup]="rentalForm" >
 <div class="col-md-12" style="margin-bottom: 100px; margin-top: 50px">
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom01">Kiralama Tarihi</label>
       <input
-        [(ngModel)]="rentdate"
         class="form-control"
         type="datetime-local"
         value=""
-        id="rent_date"
+        (change)="calcTotalPrice()"
+        formControlName="rentDate"  
+        min="{{ rentdate | date:'yyyy-MM-dd' }}"
+        id="rentDate"
         required
       />
     </div>
     <div class="col-md-6 mb-3">
       <label for="validationCustom02">Teslim Tarihi</label>
       <input
-        [(ngModel)]="returndate"
+        formControlName="returnDate" 
+        min="{{ returndate | date:'yyyy-MM-dd' }}" 
+        (change)="calcTotalPrice()"
         class="form-control"
         type="datetime-local"
         value=""
-        id="return_date"
+        id="returnDate"
       />
     </div>
   </div>
   <div class="form-row" style="width: 50%">
-    <label for="select_customer">Lütfen müşteri seçin</label>
+    <label for="select_customer"><h6> Müşteri  : </h6></label>
     <select
       id="select_customer"
       class="custom-select"
-      [(ngModel)]="customerId"
+      formControlName="customerId"
       aria-placeholder="All Customers"
       type="number"
     >
@@ -38,20 +43,22 @@
         type="number"
         [value]="customerDetailDto.customerId"
       >
-        {{ customerDetailDto.firstName }}
+        {{ customerDetailDto.firstName }} {{ customerDetailDto.lastName }} 
       </option>
     </select>
   </div>
-  <div class="form-row" style="margin-top: 20px">
-    <span>
-      <span class="badge badge-warning">Warning</span> Lütfen ödeme yapmadan
-      önce kaydınızı onaylayın.</span
-    >
-  </div>
+  <div class="mb-3">
+    <div class="form-group" id="totalPrice"> 
+      <h6> Toplam ücret : {{ totalPrice  | currency: "TRY" :"₺" }} </h6> 
+    </div>
+  </div> 
   <div class="form-row" style="float: right; margin-top: 20px">
-    <button type="button" class="btn btn-success" (click)="addToRent(carDetailDto)">
-      Kirayı Onayla
-    </button>
-    <!-- <app-payment *ngIf="isRented" [rentForPayment]="rental"></app-payment> -->
+    <button type="button" class="btn btn-success" 
+    routerLink="/cardlist"
+    (click)="addToRent()">
+      Sepete Ekle
+    </button>    
   </div>
 </div>
+</form>
+

@@ -5,5 +5,11 @@ export interface CardPayment{
     creditCardNumber : string;
     validThru : string;
     cardValidationValue  : string;
-    extractofAccount  : number;  
+    extractofAccount  : number; 
+    
+}
+
+export class CardPayment {
+    customerId:number;
+    rentTotal:number; 
 }

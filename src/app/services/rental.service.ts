@@ -16,12 +16,16 @@ export class RentalService {
   constructor(private httpClient: HttpClient) { }
 
   getRentals():Observable<listResponseModel<Rental>> {
-    let newPath = this.apiUrl + "//getall";
+    let newPath = this.apiUrl + "/getall";
     return this.httpClient.get<listResponseModel<Rental>>(newPath);
   }
 
    add(rental : Rental):  Observable<responseModel> {
-   let newPath = this.apiUrl + "/add";    
+    let newPath = this.apiUrl + "/add";    
     return this.httpClient.post<responseModel>(newPath, rental)
+  }
+  IsRentable(rental:Rental):Observable<responseModel>{
+    let newPath=this.apiUrl+"/IsRentable";
+    return this.httpClient.post<responseModel>(newPath,rental);
   }
 }

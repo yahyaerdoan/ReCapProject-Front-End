@@ -1,5 +1,5 @@
 export interface CustomerDetailDto{
-    getCustomerDetailDtos: any;
+    //getCustomerDetailDtos: any;    
     customerId : number;
     firstName : string;
     lastName : string;

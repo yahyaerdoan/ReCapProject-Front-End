@@ -12,4 +12,5 @@ export interface CarDetailDto{
     dailyPrice : number;
     description : string;
     imagePath : string[];
+    isRented : boolean;
 }

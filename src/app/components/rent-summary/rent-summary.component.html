@@ -11,10 +11,9 @@
   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
     <li *ngFor="let rentItem of rentItems">
       <a  class="dropdown-item">
-        {{ rentItem.carDetailDto.carName }}
-        <span class="badge bg-success">{{ rentItem.quantity }}</span>
+        {{ rentItem.carName }}
         <span
-          (click)="removeFromRent(rentItem.carDetailDto)"
+          (click)="removeFromRent(rentItem)"
           class="badge bg-danger"
           >sil</span
         >

@@ -143,6 +143,7 @@
             <th>Günlük Fiyat</th>
             <th>Kdv'li Günlük Fiyat</th>
             <th>Araç Bilgileri</th>
+            <th>Kiralanma Durumu</th>
             <th></th>
           </tr>
         </thead>
@@ -163,6 +164,7 @@
               {{ carDetailDto.dailyPrice | vatAdded: 18 | currency: "TRY":"₺" }}
             </td>
             <td>{{ carDetailDto.description }}</td>
+            <td>{{ carDetailDto.isRented }}</td>
 
             
            
@@ -178,11 +180,9 @@
                 &nbsp;
 
                 <button
-                  (click)="addToRent(carDetailDto)"
                   type="button"
                   class="btn btn-success"
                   routerLink="/cars/rentals/{{carDetailDto.carId }}"
-
                 >
                   Kirala
                 </button>
@@ -193,7 +193,4 @@
       </table>
     </div>
   </div>
-</div>
-<div class="d-grid gap-2 mb-2" *ngIf="isRented == false">
-  <app-rental [carforrental]="carDetailDto"></app-rental>
 </div>

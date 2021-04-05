@@ -46,6 +46,11 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { CardListComponent } from './components/card-list/card-list.component';
 import { CardPaymentComponent } from './components/card-payment/card-payment.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ExpirationInterceptor } from './interceptors/expiration.interceptor';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -84,7 +89,12 @@ import { CardPaymentComponent } from './components/card-payment/card-payment.com
     CarUpdateComponent, 
     BrandListComponent, 
     CategoryListComponent, 
-    CategoryUpdateComponent, CarListComponent, ColorListComponent, CardListComponent, CardPaymentComponent,
+    CategoryUpdateComponent,
+    CarListComponent,
+    ColorListComponent, 
+    CardListComponent, 
+    CardPaymentComponent, 
+    RegisterComponent, ProfileComponent, MenuComponent,
   
     
     
@@ -102,9 +112,12 @@ import { CardPaymentComponent } from './components/card-payment/card-payment.com
     ReactiveFormsModule,
 
   ],
-  providers: [{ //önce bütün servisler için global TTP_INTERCEPTORS yapıyoruz.
-    provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi : true
-  }],
+  providers: [ //önce bütün servisler için global TTP_INTERCEPTORS yapıyoruz.
+    DatePipe,
+    {provide : HTTP_INTERCEPTORS, useClass : AuthInterceptor, multi : true},
+    {provide: HTTP_INTERCEPTORS, useClass: ExpirationInterceptor, multi: true }
+
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

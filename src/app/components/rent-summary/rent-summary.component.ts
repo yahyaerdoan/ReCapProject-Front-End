@@ -23,8 +23,8 @@ export class RentSummaryComponent implements OnInit {
   getRent(){
     this.rentItems = this.rentService.list();
   }
-  removeFromRent(carDetailDto : CarDetailDto){
-    this.rentService.removeFromRent(carDetailDto);
-    this.toastrService.error("Sepetten Silindi!", carDetailDto.carName)
+  removeFromRent(rentItem : RentItem){
+    this.rentService.removeFromRent(rentItem);
+    this.toastrService.error("Sepetten Silindi!", rentItem.carName)
   }  
 }

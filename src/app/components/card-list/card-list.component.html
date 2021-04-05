@@ -1,12 +1,20 @@
-<div  class="row">
+<div class="row">
   <div class="">
-    <div  *ngIf="dataLoaded == false" class="spinner-grow text-warning" role="status">
+    <div
+      *ngIf="dataLoaded == false"
+      class="spinner-grow text-warning"
+      role="status"
+    >
       <span class="visually-hidden">Loading...</span>
     </div>
 
-    <h5><p class="font-weight-bold"><font color="red">Kiralanan Araç ve Detay Listesi</font></p></h5>
+    <h5>
+      <p class="font-weight-bold">
+        <font color="red">Kiralanan Araç ve Detay Listesi</font>
+      </p>
+    </h5>
 
-    <div *ngIf="dataLoaded == true" >     
+    <div *ngIf="dataLoaded == true">
       <table *ngIf="dataLoaded == true" class="table table-hover">
         <thead>
           <tr>
@@ -18,46 +26,57 @@
             <th scope="col">Günlük Fiyat</th>
             <th scope="col">Kiralama Tarihi</th>
             <th scope="col">Teslim Tarihi</th>
+            <th scope="col">Toplam</th>
+
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let rentItem of rentItems">
-            <td>{{ rentItem.carDetailDto.carName }}</td>
-            <td>{{ rentItem.carDetailDto.brandName }}</td>
-            <td>{{ rentItem.carDetailDto.brandModel }}</td>
-            <td>{{ rentItem.carDetailDto.modelYear }}</td>
-            <td>{{ rentItem.carDetailDto.colorName }}</td>
-            <td>{{ rentItem.carDetailDto.dailyPrice }}</td>
+            <td>{{ rentItem.carName }}</td>
+            <td>{{ rentItem.brandName }}</td>
+            <td>{{ rentItem.brandModel }}</td>
+            <td>{{ rentItem.modelYear }}</td>
+            <td>{{ rentItem.colorName }}</td>
+            <td>{{ rentItem.dailyPrice }}</td>
             <td>{{ rentItem.rentDate | date: "dd-MM-YYYY" }}</td>
             <td>
-              {{
-                rentItem.returnDate == null
-                  ? "Araç Kirada"
-                  : (rentItem.returnDate | date: "dd-MM-YYYY")
-              }}
+              {{rentItem.returnDate == null? "araç müsait değil" : (rentItem.returnDate | date: "dd-MM-YYYY")}}
             </td>
+            <td class="text-right">{{ rentItem.totalPrice }} TL</td>
 
             <td>
-              <button type="button" class="btn btn-success">Öde</button>
+              <button routerLink="/cardPayment" type="button" class="btn btn-success">Öde</button>
               &nbsp;
-              <button (click)="removeFromRent(rentItem.carDetailDto)" type="button" class="btn btn-danger">Sil</button>
-            </td>           
+              <button
+                (click)="removeFromRent(rentItem)"
+                type="button"
+                class="btn btn-danger"
+              >
+                Sil
+              </button>
+            </td>
           </tr>
 
- <tr *ngIf="rentItems.length == 0">
-      <td colspan="8"  align="center"> <button type="button" class="btn btn-success" routerLink="/cars">Sepetinizde Ürün Bulunmamaktadır! Yeni Ürün İncelemek için Ana Sayfaya Gidiniz!</button></td>
-    </tr>
-
+          <tr *ngIf="rentItems.length == 0">
+            <td colspan="8" align="center">
+              <button type="button" class="btn btn-success" routerLink="/cars">
+                Sepetinizde Ürün Bulunmamaktadır! Yeni Ürün İncelemek için Ana
+                Sayfaya Gidiniz!
+              </button>
+            </td>
+          </tr>
         </tbody>
       </table>
+      <div *ngIf="rentItems.length > 0">
+        <div class="row">
+          <div class="col-8">
+            <h5>
+              Toplam Tutar : <strong>{{ rentTotal }}</strong> TL
+            </h5>
+          </div>
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <!-- 
 <div

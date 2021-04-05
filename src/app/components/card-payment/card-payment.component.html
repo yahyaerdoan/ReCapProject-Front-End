@@ -1,3 +1,115 @@
+<div class="card">
+  <div class="card-header text-center">
+    <strong>Ödeme İşlemleri</strong>
+  </div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">
+        <div class="mb-3">
+          <p>
+            Toplam Tutar : <strong>{{ rentTotal }}</strong> TL
+          </p>
+        </div>
+
+        <form [formGroup]="cardpaymentForm">
+          <div class="mb-3">
+            <label for="cardholderFirstNameLastName">Kart Sahibinin Adı Soyadı</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cardholderFirstNameLastName"
+              formControlName="cardholderFirstNameLastName"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="cardNumber">Kart Numarası</label>
+            <input
+              type="text"
+              class="form-control"
+              id="creditCardNumber"
+              formControlName="creditCardNumber"
+              placeholder="0000-0000-0000-0000"
+            />
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="validThru">Son Kullanma Tarihi</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="validThru"
+                  formControlName="validThru"
+                  placeholder="00/00"
+                />
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="mb-3">
+                <label for="cardValidationValue">Guvenlik Kodu</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="cardValidationValue"
+                  formControlName="cardValidationValue"
+                  placeholder="000"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="row">
+            <div class="col-12">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  formControlName="saveCard"
+                  id="saveCard"
+                />
+                <label class="form-check-label" for="saveCard">
+                  Kart bilgilerimi kaydet
+                </label>
+              </div>
+            </div>
+          </div> -->
+        </form>
+      </div>
+
+      <!-- <div class="col-6">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Kayıtlı kartlar</strong>
+          </li>
+
+          
+        </ul>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4" style="text-align: center">
+        <button class="btn btn-success" (click)="cardPayment()">
+          Ödemeyi tamamla
+        </button>
+      </div>
+      <div class="col-4"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <!-- <div class="content">
     <div class="col-md-12">
       <div class="card">

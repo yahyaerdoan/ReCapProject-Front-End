@@ -9,6 +9,7 @@ import { CarDetailImageComponent } from './components/car-detail-image/car-detai
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { CardListComponent } from './components/card-list/card-list.component';
+import { CardPaymentComponent } from './components/card-payment/card-payment.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { CategoryUpdateComponent } from './components/category-update/category-update.component';
@@ -16,6 +17,9 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
 import { LoginComponent } from './components/login/login.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 
@@ -35,6 +39,9 @@ const routes: Routes = [
   {path : "categories/add", component : CategoryAddComponent},
 
   {path : "login", component : LoginComponent},
+  {path : "register", component : RegisterComponent},
+  {path : "profile", component : ProfileComponent},
+  {path : "menu", component : MenuComponent},
 
   {path : "brands/update", component : BrandUpdateComponent},
   {path : "categories/update", component : CategoryUpdateComponent},
@@ -56,6 +63,8 @@ const routes: Routes = [
 
   {path : "cardlist",component: CardListComponent },
   {path : "cars/image/:carId/cardlist",component: CardListComponent },
+
+  {path : "cardPayment",component: CardPaymentComponent},
 
   {path : "cars/filter/:brandId/:colorId/:categoryId/:carId", component:CarDetailDtoComponent},
 ];
