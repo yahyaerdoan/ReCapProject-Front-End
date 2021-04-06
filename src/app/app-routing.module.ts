@@ -16,8 +16,9 @@ import { CategoryUpdateComponent } from './components/category-update/category-u
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { CustomerDetailDtoComponent } from './components/customer-detail-dto/customer-detail-dto.component';
+import { CustomerComponent } from './components/customer/customer.component';
 import { LoginComponent } from './components/login/login.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
@@ -40,8 +41,7 @@ const routes: Routes = [
 
   {path : "login", component : LoginComponent},
   {path : "register", component : RegisterComponent},
-  {path : "profile", component : ProfileComponent},
-  {path : "menu", component : MenuComponent},
+  {path : "profile", component : ProfileComponent}, 
 
   {path : "brands/update", component : BrandUpdateComponent},
   {path : "categories/update", component : CategoryUpdateComponent},
@@ -65,6 +65,9 @@ const routes: Routes = [
   {path : "cars/image/:carId/cardlist",component: CardListComponent },
 
   {path : "cardPayment",component: CardPaymentComponent},
+
+  {path : "customers",component: CustomerComponent},
+  {path : "customersDetailDtos",component: CustomerDetailDtoComponent},
 
   {path : "cars/filter/:brandId/:colorId/:categoryId/:carId", component:CarDetailDtoComponent},
 ];

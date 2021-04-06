@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from 'src/app/models/customer';
+import { CustomerDetailDtoService } from 'src/app/services/customer-detail-dto.service';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({

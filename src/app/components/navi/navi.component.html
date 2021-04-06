@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-success bg-light" style="background-color: #1f7abb;" > 
   <div class="container-fluid">
+    
     <a class="navbar-brand" href="#">Yahya Erdoğan & Rent A Car Project</a>
     <button
       class="navbar-toggler"
@@ -79,36 +80,48 @@
             </li>
           </ul>
         </li>
-
-
-
-
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="#">LOKASYONLAR</a>
+         <li class="nav-item">
+          <a class="nav-link" href="#">Hizmetlerimiz</a>
         </li>
-      </ul>
-      <form class="d-flex">
-        <button
-          class="btn btn-outline-success me-3"
-          class="rounded-pill"
-          type="submit"
-          class="login-btn"
-          routerLink="/login"
-        >
-          ÜYE GİRİŞİ
-        </button>
-        <button 
-          class="btn btn-outline-success"
-          class="rounded-pill"
-          type="submit"
-          class="signup-btn"
-          routerLink="/register"
-        >
-          ÜYE OL
-        </button>
-      </form>
+      </ul>     
+      <div *ngIf="isAuth() && getCurrentCustomer()">
+        <div class="dropdown">
+
+          <button class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
+            <i class="bi-person-circle me-1"></i>
+            {{ getCurrentCustomer().firstName }} {{ getCurrentCustomer().lastName}}           
+          </button>
+      
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+            <div class="dropdown-item cursor-none">
+              <i class="bi-check2 me-1"></i>
+              {{ getCurrentCustomer().findexPoint }} Findex Puanım
+            </div>
+      
+            <hr class="dropdown-divider" />
+      
+            <div class="dropdown-item" routerLink="/profile">
+              <i class="bi-pencil me-1"></i> Profili Düzenle
+            </div>
+      
+            <div class="dropdown-item" (click)="logout()">
+              <i class="bi-box-arrow-right me-1"></i> Çıkış Yap
+            </div>
+          </div>
+        </div>
+      </div>     
+    </div>   
+    <div *ngIf="!isAuth()">
+      <button
+        class="btn btn-outline-primary rounded-pill px-4"
+        routerLink="/register"
+      >
+        <i class="bi-person-fill me-1"></i> Üye Ol
+      </button>
+    
+      <button class="btn btn-success rounded-pill px-4 ms-lg-2" routerLink="/login">
+        <i class="bi-box-arrow-in-right me-1"></i> Giriş Yap
+      </button>
     </div>
-  </div>
+  </div>  
 </nav>

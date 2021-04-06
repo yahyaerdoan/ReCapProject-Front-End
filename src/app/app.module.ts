@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,9 +49,8 @@ import { CardListComponent } from './components/card-list/card-list.component';
 import { CardPaymentComponent } from './components/card-payment/card-payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { ExpirationInterceptor } from './interceptors/expiration.interceptor';
-import { DatePipe } from '@angular/common';
+
 
 
 
@@ -94,7 +94,9 @@ import { DatePipe } from '@angular/common';
     ColorListComponent, 
     CardListComponent, 
     CardPaymentComponent, 
-    RegisterComponent, ProfileComponent, MenuComponent,
+    RegisterComponent, 
+    ProfileComponent, 
+   
   
     
     

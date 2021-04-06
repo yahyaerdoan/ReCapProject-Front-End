@@ -16,15 +16,18 @@
       <th>Soyadı</th>
       <th>Şirket Adı</th>
       <th>Email Adres</th>
+      <th>Findex Puanı</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let customerDetailDto of customerDetailDtos">
       <td>{{ customerDetailDto.customerId }}</td>
       <td>{{ customerDetailDto.firstName }}</td>
-      <td>{{ customerDetailDto.lastName }}</td>
-      <td>{{ customerDetailDto.companyName }}</td>
+      <td>{{ customerDetailDto.lastName }}</td>   
       <td>{{ customerDetailDto.email }}</td>
+      <td *ngIf="customerDetailDto.companyName">{{ customerDetailDto.companyName }}</td>
+          <td *ngIf="!customerDetailDto.companyName" class="text-muted">Şirket bilgisi yok</td>
+          <td>{{ customerDetailDto.findexPoint }}</td>
     </tr>
   </tbody>
 </table>

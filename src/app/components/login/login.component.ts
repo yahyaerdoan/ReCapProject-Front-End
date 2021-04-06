@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
    login() {
       if (this.loginForm.invalid) {
-         this.toastrService.warning('Alanları gerektiği gibi doldurunuz', 'Dikkat');
+         this.toastrService.warning('Alanları doldurunuz', 'Dikkat');
          return;
       }
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe(responseSuccess => {
          this.toastrService.success(responseSuccess.message, 'Başarılı');
          this.localStorageService.setToken(responseSuccess.data);
-         this.getCustomerByEmail(loginModel.email);
+         this.getCustomersByEmail(loginModel.email);         
 
          return this.router.navigate(['/cars']);
       }, responseError => {
@@ -62,10 +62,10 @@ export class LoginComponent implements OnInit {
       });
    }
 
-   getCustomerByEmail(email: string) {
+   getCustomersByEmail(email: string) {
       this.customerService.getCustomersByEmail(email).subscribe(responseSuccess => {
          this.customer = responseSuccess.data;
-         this.localStorageService.setCurrentCustomer(this.customer);
+         this.localStorageService.setCurrentCustomer(this.customer);      
       });
    }
    setCurrentCustomerEmail() {

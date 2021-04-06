@@ -8,23 +8,22 @@ import { responseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
+  apiUrl = 'https://localhost:44339/api/customers';
 
-  apiUrl = "https://localhost:44339/api/customers";
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient : HttpClient) { }
-
-  getCustomers(): Observable<listResponseModel<Customer>>{
-    let newPath = this.apiUrl + "/getall";
+  getCustomers(): Observable<listResponseModel<Customer>> {
+    let newPath = this.apiUrl + '/getall';
     return this.httpClient.get<listResponseModel<Customer>>(newPath);
   }
-   getCustomersByEmail(email: string): Observable<SingleResponseModel<Customer>> {
-     let newPath = this.apiUrl + "/GetCustomersByEmail?email=" + email;
-     return this.httpClient.get<SingleResponseModel<Customer>>(newPath);
- }
- update(customer: Customer): Observable<responseModel> {
-  return this.httpClient.put<responseModel>(this.apiUrl, customer);
-}
+  getCustomersByEmail(email: string): Observable<SingleResponseModel<Customer>> {
+    let newPath = this.apiUrl + '/GetCustomersByEmail?email=' + email;
+    return this.httpClient.get<SingleResponseModel<Customer>>(newPath);
+  }
+  update(customer: Customer): Observable<responseModel> {
+    return this.httpClient.put<responseModel>(this.apiUrl, customer);
+  }
 }

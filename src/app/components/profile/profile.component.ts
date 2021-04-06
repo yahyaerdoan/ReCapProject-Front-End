@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
   }
 
   getCustomer() {
-     this.customer = this.localStorageService.getCurrentCustomer();
+     this.customer = this.localStorageService.getCurrentCustomer();     
   }
 
   createCustomerUpdateForm() {
@@ -88,3 +88,5 @@ export class ProfileComponent implements OnInit {
     return new Date().getMonth();
   }
 }
+
+

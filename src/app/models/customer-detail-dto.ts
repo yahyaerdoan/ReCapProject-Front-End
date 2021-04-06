@@ -1,8 +1,11 @@
 export interface CustomerDetailDto{
-    //getCustomerDetailDtos: any;    
+    getCustomerDetailDtos: any;    
     customerId : number;
     firstName : string;
     lastName : string;
     companyName : string;
-    email : string;
+    email : string;userId : number;    
+    findexPoint: number
+    password: string
 }
+    

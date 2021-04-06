@@ -37,7 +37,7 @@ export class ExpirationInterceptor implements HttpInterceptor {
         'Bilgi'
       );
 
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/login']);
     }
 
     return next.handle(request);
