@@ -50,6 +50,7 @@ import { CardPaymentComponent } from './components/card-payment/card-payment.com
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExpirationInterceptor } from './interceptors/expiration.interceptor';
+import { CardPaymentSavedComponent } from './components/card-payment-saved/card-payment-saved.component';
 
 
 
@@ -95,7 +96,7 @@ import { ExpirationInterceptor } from './interceptors/expiration.interceptor';
     CardListComponent, 
     CardPaymentComponent, 
     RegisterComponent, 
-    ProfileComponent, 
+    ProfileComponent, CardPaymentSavedComponent, 
    
   
     

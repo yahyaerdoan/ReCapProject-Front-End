@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit {
     this.customerService
       .getCustomersByEmail(email)
       .subscribe((responseSuccess) => {
-        this.customer = responseSuccess.data;
+        this.customer = responseSuccess.data[0];
         this.localStorageService.setCurrentCustomer(this.customer);
       });
   }

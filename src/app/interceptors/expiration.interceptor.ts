@@ -33,7 +33,7 @@ export class ExpirationInterceptor implements HttpInterceptor {
     if (Number(expirationDate) <= Number(currentDate)) {
       this.localstorageService.removeToken();
       this.toastrService.info(
-        'Oturumunuzun süresi doldu, lütfen tekrar giriş yapın',
+        'Oturumunuzun Süresi Doldu, Lütfen Tekrar Giriş Yapınız!',
         'Bilgi'
       );
 

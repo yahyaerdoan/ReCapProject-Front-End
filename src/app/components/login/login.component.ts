@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
 
    getCustomersByEmail(email: string) {
       this.customerService.getCustomersByEmail(email).subscribe(responseSuccess => {
-         this.customer = responseSuccess.data;
+         this.customer = responseSuccess.data[0];
          this.localStorageService.setCurrentCustomer(this.customer);      
       });
    }

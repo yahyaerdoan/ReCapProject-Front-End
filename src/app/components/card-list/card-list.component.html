@@ -27,7 +27,6 @@
             <th scope="col">Kiralama Tarihi</th>
             <th scope="col">Teslim Tarihi</th>
             <th scope="col">Toplam</th>
-
           </tr>
         </thead>
         <tbody>
@@ -37,15 +36,20 @@
             <td>{{ rentItem.brandModel }}</td>
             <td>{{ rentItem.modelYear }}</td>
             <td>{{ rentItem.colorName }}</td>
-            <td>{{ rentItem.dailyPrice }}</td>
-            <td>{{ rentItem.rentDate | date: "dd-MM-YYYY" }}</td>
+            <td>{{ rentItem.dailyPrice | currency: "TRY":"₺" }}</td>
+            <td>{{ rentItem.rentDate | date: "dd.MM.YYYY" }}</td>
             <td>
-              {{rentItem.returnDate == null? "araç müsait değil" : (rentItem.returnDate | date: "dd-MM-YYYY")}}
+              {{
+                rentItem.returnDate == null
+                  ? "araç müsait değil"
+                  : (rentItem.returnDate | date: "dd.MM.YYYY")
+              }}
             </td>
-            <td class="text-right">{{ rentItem.totalPrice }} TL</td>
+            <td class="text-right">
+              {{ rentItem.totalPrice | currency: "TRY":"₺" }}
+            </td>
 
             <td>
-              <button routerLink="/cardPayment" type="button" class="btn btn-success">Öde</button>
               &nbsp;
               <button
                 (click)="removeFromRent(rentItem)"
@@ -57,23 +61,38 @@
             </td>
           </tr>
 
-          <tr *ngIf="rentItems.length == 0">
+          <tr *ngIf="rentItems.length == -1">
             <td colspan="8" align="center">
+              <div class="d-grid gap-2"> 
               <button type="button" class="btn btn-success" routerLink="/cars">
                 Sepetinizde Ürün Bulunmamaktadır! Yeni Ürün İncelemek için Ana
                 Sayfaya Gidiniz!
               </button>
+            </div>
             </td>
           </tr>
         </tbody>
       </table>
-      <div *ngIf="rentItems.length > 0">
+
+      <div  class="d-grid gap-2 col-6 mx-auto" *ngIf="rentItems.length > 0">
         <div class="row">
-          <div class="col-8">
-            <h5>
-              Toplam Tutar : <strong>{{ rentTotal }}</strong> TL
-            </h5>
+          
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <h6>
+              <font color="black">Toplam Tutar :</font>
+              <strong>{{ rentTotal | currency: "TRY":"₺" }}</strong>
+            </h6>
+            
+            <button 
+              routerLink="/cardPayment"
+              type="button"
+              class="btn btn-success"
+            >
+              Öde
+            </button>
           </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

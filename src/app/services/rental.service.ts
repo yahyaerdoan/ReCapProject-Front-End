@@ -24,8 +24,13 @@ export class RentalService {
     let newPath = this.apiUrl + "/add";    
     return this.httpClient.post<responseModel>(newPath, rental)
   }
-  IsRentable(rental:Rental):Observable<responseModel>{
-    let newPath=this.apiUrl+"/IsRentable";
-    return this.httpClient.post<responseModel>(newPath,rental);
+
+  IsRentable(rental : Rental):Observable<responseModel>{
+    let newPath=this.apiUrl + "/IsRentable";
+    return this.httpClient.post<responseModel>(newPath, rental);
   }
+
+  
+
+
 }

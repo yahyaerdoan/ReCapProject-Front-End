@@ -13,6 +13,7 @@ import { ColorService } from 'src/app/services/color.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { CarService } from 'src/app/services/car.service';
 import { RentalService } from 'src/app/services/rental.service';
+import { Rental } from 'src/app/models/rental';
 
 @Component({
   selector: 'app-car-detail-dto',
@@ -35,8 +36,7 @@ export class CarDetailDtoComponent implements OnInit {
 
   filterText = '';
   dataLoaded = false;
-
-  isCarAvail: boolean
+  
 
   constructor(
     private carDetailDtoService: CarDetailDtoService,
@@ -47,7 +47,7 @@ export class CarDetailDtoComponent implements OnInit {
     private colorService: ColorService,
     private categoryService: CategoryService,
     private carService: CarService,
-    private rentalService: RentalService,  
+     
   ) {}
 
   ngOnInit(): void {
@@ -67,14 +67,12 @@ export class CarDetailDtoComponent implements OnInit {
       } else if (params['categoryId']) {
         this.getCarsDetailsByCategory(params['categoryId']);
       } else if (params['carId']) {
-        this.getCarsDetailsByCar(params['carId']);
+        this.getCarsDetailsByCar(params['carId']);         
       } else if (params['brandId']) {
         this.getCarsDetailsByBrand(params['brandId']);
       } else if (params['colorId']) {
         this.getCarsDetailsByColor(params['colorId']);
-      } else if (params["carId"]) {
-        //this.isCarAvailable(params["carId"]);        
-      }
+      } 
       else {
         this.getCarDetailDtos();
       }
@@ -198,15 +196,4 @@ export class CarDetailDtoComponent implements OnInit {
     }
     */
   }  
-  // isCarAvailable(carId : number) {
-  //   this.rentalService.isCarAvailable(carId).subscribe(
-  //     response=>{        
-  //       this.isCarAvail = response
-  //     }, 
-  //     responseError=>
-  //     {
-  //       this.toastrService.info("Tercih Ettiğiniz Araç Henüz Müsait Değil!","Uyarı!")         
-  //     }
-  //   );
-  // }
 }

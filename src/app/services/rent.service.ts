@@ -17,15 +17,9 @@ export class RentService {
   constructor() { }
 
   addToRent (rentItem : RentItem ){
-    let item =RentItems.find(c=> c.carId === rentItem.carId); //Gönderilen aracın Id'si varsa ekle
-    if(item){ //item varsa 1 artıracak      
-    }
-    else{
-      //rentItem.quantity =1;
       RentItems.push(rentItem) //sepete ekler
       this.cardPayment.customerId==rentItem.customerId
-      this.calculateRent
-    }
+      this.calculateRent()    
   }
 
   removeFromRent(rentItem : RentItem ){
@@ -33,6 +27,7 @@ export class RentService {
     RentItems.splice(RentItems.indexOf(item),1);
     this.calculateRent();
   }
+
   calculateRent(){
     let total = RentItems.reduce((acc, val) => acc += val.totalPrice, 0)
     this.cardPayment.rentTotal = total

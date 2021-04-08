@@ -19,9 +19,9 @@ export class CustomerService {
     let newPath = this.apiUrl + '/getall';
     return this.httpClient.get<listResponseModel<Customer>>(newPath);
   }
-  getCustomersByEmail(email: string): Observable<SingleResponseModel<Customer>> {
+  getCustomersByEmail(email: string): Observable<listResponseModel<Customer>> {
     let newPath = this.apiUrl + '/GetCustomersByEmail?email=' + email;
-    return this.httpClient.get<SingleResponseModel<Customer>>(newPath);
+    return this.httpClient.get<listResponseModel<Customer>>(newPath);
   }
   update(customer: Customer): Observable<responseModel> {
     return this.httpClient.put<responseModel>(this.apiUrl, customer);

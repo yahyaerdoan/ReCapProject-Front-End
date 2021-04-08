@@ -85,17 +85,17 @@
         </li>
       </ul>     
       <div *ngIf="isAuth() && getCurrentCustomer()">
-        <div class="dropdown">
+        <div class="dropdown-item-success cursor-none">
 
           <button class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
-            <i class="bi-person-circle me-1"></i>
+            <i class="bi-person-circle "></i>
             {{ getCurrentCustomer().firstName }} {{ getCurrentCustomer().lastName}}           
           </button>
       
-          <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-left">
             <div class="dropdown-item cursor-none">
               <i class="bi-check2 me-1"></i>
-              {{ getCurrentCustomer().findexPoint }} Findex Puanım
+              Findex Puanım : {{ getCurrentCustomer().findexPoint }} 
             </div>
       
             <hr class="dropdown-divider" />

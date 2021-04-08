@@ -7,9 +7,12 @@
     <div class="row">
       <div class="col-6">
         <div class="mb-3">
-          <p>
-            Toplam Tutar : <strong>{{ rentTotal }}</strong> TL
-          </p>
+          <h6>
+            <p><font color="black">Toplam Tutar :</font>
+              <strong>{{ rentTotal | currency: "TRY":"₺" }}</strong> 
+             </p>
+          </h6>
+         
         </div>
 
         <form [formGroup]="cardpaymentForm">
@@ -62,7 +65,7 @@
             </div>
           </div>
 
-          <!-- <div class="row">
+           <!-- <div class="row">
             <div class="col-12">
               <div class="form-check">
                 <input
@@ -71,31 +74,31 @@
                   formControlName="saveCard"
                   id="saveCard"
                 />
-                <label class="form-check-label" for="saveCard">
+                 <label class="form-check-label" for="saveCard">
                   Kart bilgilerimi kaydet
-                </label>
+                </label> 
               </div>
             </div>
-          </div> -->
+          </div>   -->
         </form>
       </div>
 
-      <!-- <div class="col-6">
+      <div class="col-6">
         <ul class="list-group">
           <li class="list-group-item">
-            <strong>Kayıtlı kartlar</strong>
+            <strong>Kayıtlı kartlarım</strong>
           </li>
 
           
         </ul>
-      </div> -->
+      </div>
     </div>
   </div>
 
   <div class="card-footer">
     <div class="row">
       <div class="col-4"></div>
-      <div class="col-4" style="text-align: center">
+      <div class="col-4" class="d-grid gap-2" >
         <button class="btn btn-success" (click)="cardPayment()">
           Ödemeyi tamamla
         </button>

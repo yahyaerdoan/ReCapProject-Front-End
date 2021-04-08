@@ -1,6 +1,6 @@
-<div class="diveder" style="border: 1px solid grey; margin-top: 100px"></div>
+<div  class="d-grid gap-2 col-6 mx-auto" class="diveder" style="border: 1px solid rgb(223, 23, 23); margin-top: 100px"></div>
 
-<form [formGroup]="rentalForm" >
+<form class="d-grid gap-2 col-6 mx-auto" [formGroup]="rentalForm" >
 <div class="col-md-12" style="margin-bottom: 100px; margin-top: 50px">
   <div class="form-row">
     <div class="col-md-6 mb-3">
@@ -52,7 +52,7 @@
       <h6> Toplam ücret : {{ totalPrice  | currency: "TRY" :"₺" }} </h6> 
     </div>
   </div> 
-  <div class="form-row" style="float: right; margin-top: 20px">
+  <div class="d-grid gap-2" >
     <button type="button" class="btn btn-success" 
     routerLink="/cardlist"
     (click)="addToRent()">
