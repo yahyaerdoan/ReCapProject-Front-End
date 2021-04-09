@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CarDetailDto } from '../models/car-detail-dto';
-import { CardPayment } from '../models/cardPayment';
+import { Card, CartDetail } from '../models/card';
 import { RentItem } from '../models/rentItem';
 import { RentItems } from '../models/rentItems';
 
@@ -10,16 +10,16 @@ import { RentItems } from '../models/rentItems';
 })
 export class RentService {
 
-  private cardPayment = new CardPayment()
-  private dataSource = new BehaviorSubject<CardPayment>(this.cardPayment);
+  private cartDetail = new CartDetail()
+  private dataSource = new BehaviorSubject<CartDetail>(this.cartDetail);
   data = this.dataSource.asObservable()
 
   constructor() { }
 
   addToRent (rentItem : RentItem ){
       RentItems.push(rentItem) //sepete ekler
-      this.cardPayment.customerId==rentItem.customerId
-      this.calculateRent()    
+      this.cartDetail.customerId = rentItem.customerId
+      this.calculateRent()  
   }
 
   removeFromRent(rentItem : RentItem ){
@@ -30,8 +30,8 @@ export class RentService {
 
   calculateRent(){
     let total = RentItems.reduce((acc, val) => acc += val.totalPrice, 0)
-    this.cardPayment.rentTotal = total
-    this.dataSource.next(this.cardPayment)
+    this.cartDetail.rentTotal = total
+    this.dataSource.next(this.cartDetail)
   }
 
   list() : RentItem[]{ //kiralama sepetini listeliyoruz.

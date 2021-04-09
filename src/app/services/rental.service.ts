@@ -21,7 +21,7 @@ export class RentalService {
   }
 
    add(rental : Rental):  Observable<responseModel> {
-    let newPath = this.apiUrl + "/add";    
+    let newPath = this.apiUrl + "/add"; 
     return this.httpClient.post<responseModel>(newPath, rental)
   }
 

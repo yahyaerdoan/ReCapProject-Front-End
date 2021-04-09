@@ -45,16 +45,11 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { CategoryUpdateComponent } from './components/category-update/category-update.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { ColorListComponent } from './components/color-list/color-list.component';
-import { CardListComponent } from './components/card-list/card-list.component';
-import { CardPaymentComponent } from './components/card-payment/card-payment.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExpirationInterceptor } from './interceptors/expiration.interceptor';
-import { CardPaymentSavedComponent } from './components/card-payment-saved/card-payment-saved.component';
-
-
-
-
+import { PaymentComponent } from './components/payment/payment.component';
+import { CartListComponent } from './components/cart-list/cart-list.component';
 
 @NgModule({
   declarations: [
@@ -93,14 +88,10 @@ import { CardPaymentSavedComponent } from './components/card-payment-saved/card-
     CategoryUpdateComponent,
     CarListComponent,
     ColorListComponent, 
-    CardListComponent, 
-    CardPaymentComponent, 
     RegisterComponent, 
-    ProfileComponent, CardPaymentSavedComponent, 
-   
-  
-    
-    
+    ProfileComponent,
+    PaymentComponent,
+    CartListComponent
 
   ],
   imports: [

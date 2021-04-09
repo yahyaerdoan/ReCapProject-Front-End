@@ -1,18 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { CarDetailDto } from 'src/app/models/car-detail-dto';
 import { RentItem } from 'src/app/models/rentItem';
 import { RentService } from 'src/app/services/rent.service';
 
 @Component({
-  selector: 'app-card-list',
-  templateUrl: './card-list.component.html',
-  styleUrls: ['./card-list.component.css']
+  selector: 'app-cart-list',
+  templateUrl: './cart-list.component.html',
+  styleUrls: ['./cart-list.component.css']
 })
-export class CardListComponent implements OnInit {
+export class CartListComponent implements OnInit {
   
   dataLoaded = false;
-  rentTotal:number  
+  rentTotal:number
+  customerId:number
   rentItems : RentItem[] =[]
 
   constructor(private rentService : RentService,
@@ -26,6 +26,7 @@ export class CardListComponent implements OnInit {
     this.rentItems = this.rentService.list()
     this.rentService.data.subscribe(response => {
       this.rentTotal = response.rentTotal
+      this.customerId = response.customerId
     })
     this.dataLoaded = true;
   } 

@@ -25,21 +25,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RentalComponent implements OnInit {
   dataLoaded = false;
-
   selectedCar: CarDetailDto;
-
-  rentalDetailDtos: RentalDetailDto[] = [];
-  rentals: Rental[] = [];
+  carDetailDto: CarDetailDto;
   customerDetailDtos: CustomerDetailDto[] = [];
+  rentalDetailDtos: RentalDetailDto[] = [];
+  rentals: Rental[] = [];  
   customerId: number;
   rentdate: Date;
-  returndate: Date;
-
-  carDetailDto: CarDetailDto;
+  returndate: Date;  
   carId: number;
   Rentable: boolean;
   totalPrice: number;
-
   rentalForm: FormGroup;
 
   constructor(
@@ -50,8 +46,7 @@ export class RentalComponent implements OnInit {
     private rentService: RentService,
     private carDetailDtoService: CarDetailDtoService,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private customerService: CustomerService,
+    private formBuilder: FormBuilder,  
     private router: Router,
   ) {}
 
@@ -113,6 +108,8 @@ export class RentalComponent implements OnInit {
 
       this.rentalService.IsRentable(rentalModel).subscribe(
         (response) => {
+
+          // findex puanıda müsait ise sepete eklesin
           this.rentService.addToRent(rentalModel);
           this.toastrService.success(
             'Kiralama Sepetine Eklendi',

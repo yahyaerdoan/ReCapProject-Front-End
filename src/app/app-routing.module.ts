@@ -8,8 +8,7 @@ import { CarDetailDtoComponent } from './components/car-detail-dto/car-detail-dt
 import { CarDetailImageComponent } from './components/car-detail-image/car-detail-image.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
-import { CardListComponent } from './components/card-list/card-list.component';
-import { CardPaymentComponent } from './components/card-payment/card-payment.component';
+import { PaymentComponent } from './components/payment/payment.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { CategoryUpdateComponent } from './components/category-update/category-update.component';
@@ -23,6 +22,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
+import { CartListComponent } from './components/cart-list/cart-list.component';
 
 const routes: Routes = [
   {path : "",pathMatch : "full", component : CarDetailDtoComponent},
@@ -61,10 +61,10 @@ const routes: Routes = [
   {path : "cars/rentals",component: RentalComponent },
   {path : "cars/rentals/:carId",component: RentalComponent },
 
-  {path : "cardlist",component: CardListComponent },
-  {path : "cars/image/:carId/cardlist",component: CardListComponent },
+  {path : "cartlist",component: CartListComponent },
+  {path : "cars/image/:carId/cartlist",component: CartListComponent },
 
-  {path : "cardPayment",component: CardPaymentComponent},
+  {path : "payment",component: PaymentComponent},
 
   {path : "customers",component: CustomerComponent},
   {path : "customersDetailDtos",component: CustomerDetailDtoComponent},

@@ -1,10 +1,13 @@
-export class CardPayment {
-    cardPaymentId? : number;
+export class Card {
+    cardId? : number;
     customerId : number;
     cardholderFirstNameLastName : string;
     creditCardNumber : string;
     validThru : string;
-    cardValidationValue  : string;
-    extractofAccount  : number;     
+    cardValidationValue  : string;    
+}
+
+export class CartDetail {
+    customerId : number;
     rentTotal:number; 
 }

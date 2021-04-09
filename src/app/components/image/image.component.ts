@@ -29,8 +29,6 @@ export class ImageComponent implements OnInit {
     this.imageService.getImages(carId).subscribe((response) => {
       this.images= response.data;
       this.dataLoaded = true;
-      console.log("get image çalıştı")     
-      console.log(response)     
     })  
   }  
   setCurrentImage(image : Image){

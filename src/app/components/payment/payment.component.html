@@ -15,7 +15,7 @@
          
         </div>
 
-        <form [formGroup]="cardpaymentForm">
+        <form [formGroup]="paymentForm">
           <div class="mb-3">
             <label for="cardholderFirstNameLastName">Kart Sahibinin Adı Soyadı</label>
             <input
@@ -65,7 +65,7 @@
             </div>
           </div>
 
-           <!-- <div class="row">
+          <div class="row">
             <div class="col-12">
               <div class="form-check">
                 <input
@@ -79,7 +79,7 @@
                 </label> 
               </div>
             </div>
-          </div>   -->
+          </div>
         </form>
       </div>
 
@@ -88,8 +88,9 @@
           <li class="list-group-item">
             <strong>Kayıtlı kartlarım</strong>
           </li>
-
-          
+          <li *ngFor="let card of cards" class="list-group-item"  > 
+            {{ card.cardholderFirstNameLastName }} 
+          </li>
         </ul>
       </div>
     </div>
@@ -99,7 +100,7 @@
     <div class="row">
       <div class="col-4"></div>
       <div class="col-4" class="d-grid gap-2" >
-        <button class="btn btn-success" (click)="cardPayment()">
+        <button class="btn btn-success" (click)="payment()" routerLink="" >
           Ödemeyi tamamla
         </button>
       </div>

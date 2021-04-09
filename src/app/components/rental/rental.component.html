@@ -31,6 +31,7 @@
   </div>
   <div class="form-row" style="width: 50%">
     <label for="select_customer"><h6> Müşteri  : </h6></label>
+
     <select
       id="select_customer"
       class="custom-select"
@@ -38,11 +39,11 @@
       aria-placeholder="All Customers"
       type="number"
     >
-      <option
-        *ngFor="let customerDetailDto of customerDetailDtos"
+      <option *ngFor="let customerDetailDto of customerDetailDtos"
         type="number"
-        [value]="customerDetailDto.customerId"
-      >
+        [ngValue]="customerDetailDto.customerId"
+        >
+
         {{ customerDetailDto.firstName }} {{ customerDetailDto.lastName }} 
       </option>
     </select>
@@ -54,7 +55,7 @@
   </div> 
   <div class="d-grid gap-2" >
     <button type="button" class="btn btn-success" 
-    routerLink="/cardlist"
+    routerLink="/cartlist"
     (click)="addToRent()">
       Sepete Ekle
     </button>    
