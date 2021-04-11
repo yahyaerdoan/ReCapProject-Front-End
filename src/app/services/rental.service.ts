@@ -21,16 +21,18 @@ export class RentalService {
   }
 
    add(rental : Rental):  Observable<responseModel> {
-    let newPath = this.apiUrl + "/add"; 
+    let newPath = this.apiUrl + "/add";
     return this.httpClient.post<responseModel>(newPath, rental)
   }
 
-  IsRentable(rental : Rental):Observable<responseModel>{
-    let newPath=this.apiUrl + "/IsRentable";
-    return this.httpClient.post<responseModel>(newPath, rental);
+  IsRentable(carId:number):Observable<responseModel>{
+    console.log(carId)
+    let newPath=this.apiUrl + "/IsRentable?carId="+ carId;
+    return this.httpClient.get<responseModel>(newPath);
   }
 
-  
-
-
+  FindexScoreCheck(customerId : number, carId : number):Observable<responseModel>{
+    let newPath=this.apiUrl + "/FindexScoreCheck?customerId=" + customerId +"&carId=" + carId;
+    return this.httpClient.get<responseModel>(newPath);
+  }
 }

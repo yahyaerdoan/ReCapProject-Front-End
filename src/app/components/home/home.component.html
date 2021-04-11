@@ -1,0 +1,26 @@
+<div class="content">
+  <div class="row">
+    <div
+      *ngFor="let carDetailDto of carDetailDtos"
+      class="card home-card"
+      HomeCardColor
+    >
+      <img
+        src="{{ 'https://localhost:44339/images/' + carDetailDto.imagePath }}"
+        class="rounded mx-100 d-block w-100"
+        width="100" height="200"
+        alt=""
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ carDetailDto.carName }}</h5>
+        <p class="card-text">{{ carDetailDto.description }}</p>
+        <a
+          routerLink="/cars/image/{{ carDetailDto.carId }}"
+          [queryParams]="{ carId: carDetailDto.carId }"
+          class="btn btn-outline-info"
+          >Detaylar</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -30,9 +30,10 @@
     </div>
   </div>
   <div class="form-row" style="width: 50%">
-    <label for="select_customer"><h6> Müşteri  : </h6></label>
+    <label for="select_customer"><h6> Müşteri  : {{activeCustomer.firstName + "  " +  activeCustomer.lastName}} </h6></label>
 
-    <select
+
+    <!-- <select
       id="select_customer"
       class="custom-select"
       formControlName="customerId"
@@ -46,7 +47,7 @@
 
         {{ customerDetailDto.firstName }} {{ customerDetailDto.lastName }} 
       </option>
-    </select>
+    </select> -->
   </div>
   <div class="mb-3">
     <div class="form-group" id="totalPrice"> 

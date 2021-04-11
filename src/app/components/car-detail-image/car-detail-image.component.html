@@ -1,55 +1,114 @@
 <div class="row">
-    <div class="col-md-8">
-      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-  
-        <ol class="carousel-indicators">
-          <li data-bs-target="#carouselExampleDark" *ngFor="let li of images; let i = index" [attr.data-bs-slide-to]="i" [class]="i == 0 ? 'active' : ''"></li>
-        </ol>
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-  
-        <div class="carousel-inner">
-          <div *ngFor="let image of images" [class]="getCurrentImageClass(image)" data-bs-interval="2900">
-            <img src="{{path}}/{{image.imagePath}}" class="d-block w-100" alt="{{image.imagePath}}">          
-          </div>
-        </div>
-  
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-  
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+  <div class="col-md-8">
+    <div
+      id="carouselExampleDark"
+      class="carousel carousel-dark slide"
+      data-bs-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-bs-target="#carouselExampleDark"
+          *ngFor="let li of images; let i = index"
+          [attr.data-bs-slide-to]="i"
+          [class]="i == 0 ? 'active' : ''"
+        ></li>
+      </ol>
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
       </div>
+
+      <div class="carousel-inner">
+        <div
+          *ngFor="let image of images"
+          [class]="getCurrentImageClass(image)"
+          data-bs-interval="2900"
+        >
+          <img
+            src="{{ path }}/{{ image.imagePath }}"
+            width="800" height="395"
+            alt="{{ image.imagePath }}"
+          />
+        </div>
+      </div>
+
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-  
-    <div class="col-md-4">
-      <div *ngIf="carDetailDto" class="card">
-        <div class="card-body">
-          <h5 class="card-title">
-            <strong> {{ carDetailDto.carName }}</strong>
-          </h5>
-          <p class="card-text">{{ carDetailDto.description }}</p>
-        </div>
-  
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Kategori : {{ carDetailDto.categoryName }}</li>
-          <li class="list-group-item">Marka : {{ carDetailDto.brandName }}</li>
-          <li class="list-group-item">Renk : {{ carDetailDto.colorName }}</li>
-          <li class="list-group-item">Model Yılı : {{ carDetailDto.modelYear }}</li>
-          <li class="list-group-item">Günlük Ücret : {{ carDetailDto.dailyPrice | currency: "TRY" :"₺"}}
-          </li>
-        </ul>
-        <div class="card-body">
-          
-          <button routerLink="/cars/rentals/{{carDetailDto.carId }}" routerLink="CardList" type="button" class="btn btn-success">Kirala</button>
-        </div>
+  </div>
+
+  <div class="col-md-4">
+    <div *ngIf="carDetailDto" class="card">
+      <div class="card-body">
+        <h5 class="card-title"><strong> {{ carDetailDto.carName }}</strong></h5>
+        <p class="card-text">{{ carDetailDto.description }}</p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Kategori : {{ carDetailDto.categoryName }}</li>
+        <li class="list-group-item">Marka : {{ carDetailDto.brandName }}</li>
+        <li class="list-group-item">Marka : {{ carDetailDto.brandModel }}</li>
+        <li class="list-group-item">Renk : {{ carDetailDto.colorName }}</li>
+        <li class="list-group-item">Model Yılı : {{ carDetailDto.modelYear }}</li>
+        <li class="list-group-item">Günlük Ücret : {{ carDetailDto.dailyPrice | currency: "TRY":"₺" }}</li>
+      </ul>
+      <div class="card-body">
+        <button
+          routerLink="/cars/rentals/{{ carDetailDto.carId }}"
+          routerLink="cartlist"
+          type="button"
+          class="btn btn-success"
+        >
+          Kirala
+        </button>
+
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+        <button
+        routerLink="/cars"       
+        type="button"
+        class="btn btn-primary"
+      >
+        Geri
+      </button>
       </div>
     </div>
   </div>
+</div>

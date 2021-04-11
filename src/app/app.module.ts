@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,30 +27,33 @@ import { FilterCategoryPipe } from './pipes/filter-category.pipe';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { FooterComponent } from './components/footer/footer.component';
 import { RentSummaryComponent } from './components/rent-summary/rent-summary.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { LoginComponent } from './components/login/login.component';
-import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { FilterCarPipe } from './pipes/filter-car.pipe';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { ColorUpdateComponent } from './components/color-update/color-update.component';
-import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { BrandListComponent } from './components/brand-list/brand-list.component';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { CategoryUpdateComponent } from './components/category-update/category-update.component';
-import { CarListComponent } from './components/car-list/car-list.component';
+
 import { ColorListComponent } from './components/color-list/color-list.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ExpirationInterceptor } from './interceptors/expiration.interceptor';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CartListComponent } from './components/cart-list/cart-list.component';
+import { CarListComponent } from './components/car-list/car-list.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { HomeComponent } from './components/home/home.component';
+import { ColorDirective } from './directives/color.directive';
+
 
 @NgModule({
   declarations: [
@@ -75,6 +79,7 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
     FooterComponent,
     RentSummaryComponent,
     CarAddComponent,
+    CarUpdateComponent,
     ColorAddComponent,
     BrandAddComponent,
     LoginComponent,   
@@ -82,7 +87,7 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
     CategoryAddComponent, 
     BrandUpdateComponent, 
     ColorUpdateComponent, 
-    CarUpdateComponent, 
+    ColorUpdateComponent, 
     BrandListComponent, 
     CategoryListComponent, 
     CategoryUpdateComponent,
@@ -91,7 +96,10 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
     RegisterComponent, 
     ProfileComponent,
     PaymentComponent,
-    CartListComponent
+    CartListComponent,
+    HomeComponent,
+    ColorDirective,
+    
 
   ],
   imports: [
@@ -104,6 +112,7 @@ import { CartListComponent } from './components/cart-list/cart-list.component';
     }),
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    JwtModule,
 
   ],
   providers: [ //önce bütün servisler için global TTP_INTERCEPTORS yapıyoruz.

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/car-detail-dto';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
 import { ToastrService } from 'ngx-toastr';
-import { RentService } from 'src/app/services/rent.service';
 import { Brand } from 'src/app/models/brand';
 import { Color } from 'src/app/models/color';
 import { Car } from 'src/app/models/car';
@@ -12,8 +11,9 @@ import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { CarService } from 'src/app/services/car.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RentalService } from 'src/app/services/rental.service';
-import { Rental } from 'src/app/models/rental';
+
 
 @Component({
   selector: 'app-car-detail-dto',
@@ -41,23 +41,26 @@ export class CarDetailDtoComponent implements OnInit {
   constructor(
     private carDetailDtoService: CarDetailDtoService,
     private activatedRoute: ActivatedRoute,
-    private toastrService: ToastrService,
-    private rentService: RentService,
+    private toastrService: ToastrService,   
     private brandService: BrandService,
     private colorService: ColorService,
     private categoryService: CategoryService,
     private carService: CarService,
+    private localStorageSercive : LocalStorageService,
+    private router : Router,
+    private rentalService : RentalService
      
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (
-        (params['categoryId'],
-        params['carId'],
-        params['brandId'],
-        params['colorId'])
-      ) {
+      if ((
+        params['brandId'] &&
+        params['categoryId']&&
+        params['carId']&&
+        params['colorId'] )
+        
+      ) {        
         this.getFilterCars(
           params['categoryId'],
           params['carId'],
@@ -71,7 +74,7 @@ export class CarDetailDtoComponent implements OnInit {
       } else if (params['brandId']) {
         this.getCarsDetailsByBrand(params['brandId']);
       } else if (params['colorId']) {
-        this.getCarsDetailsByColor(params['colorId']);
+        this.getCarsDetailsByColor(params['colorId']);       
       } 
       else {
         this.getCarDetailDtos();
@@ -111,8 +114,8 @@ export class CarDetailDtoComponent implements OnInit {
   }
   getCarsDetailsByColor(colorId: number) {
     this.carDetailDtoService.getCarsByColor(colorId).subscribe((response) => {
-      this.carDetailDtos = response.data;
-      this.dataLoaded = true;
+      this.carDetailDtos = response.data;      
+      this.dataLoaded = true;     
     });
   }
   getCars() {
@@ -132,7 +135,7 @@ export class CarDetailDtoComponent implements OnInit {
   }
   getColors() {
     this.colorService.getColors().subscribe((response) => {
-      this.colors = response.data;
+      this.colors = response.data;     
     });
   }
   getFilterCars(
@@ -160,7 +163,6 @@ export class CarDetailDtoComponent implements OnInit {
       return false;
     }
   }
-
   getSelectedCarId(carId: number) {
     if (this.carId == carId) {
       return true;
@@ -175,25 +177,37 @@ export class CarDetailDtoComponent implements OnInit {
       return false;
     }
   }
-
   getSelectedBrandId(brandId: number) {
     if (this.brandId == brandId) {
       return true;
     } else {
       return false;
     }
+  } 
+  carControl(carDetailDto : CarDetailDto){
+
+
+    let customer = this.localStorageSercive.getCurrentCustomer(); 
+    this.rentalService.FindexScoreCheck(customer.customerId, carDetailDto.carId).subscribe(response=>{      
+
+      this.rentalService.IsRentable(carDetailDto.carId).subscribe(response=>{
+        console.log(response)
+        this.router.navigate(["/cars/rentals/" + carDetailDto.carId]);      
+        },
+        responseError => {
+        this.toastrService.error(responseError.error.message)
+      })
+    },responseError => {
+      this.toastrService.info(responseError.error.message)
+    });
   }
-  addToRent(carDetailDto: CarDetailDto) {
-   /*
-    if (carDetailDto.carId === 0) {
-      this.toastrService.error('Bu araç bulunmuyor');
-    } else {
-      this.toastrService.success(
-        'Kiralama Sepetine Eklendi',
-        carDetailDto.carName
-      );
-      this.rentService.addToRent(carDetailDto);
-    }
-    */
-  }  
+  
+  //  findexPointControl(carDetailDto : CarDetailDto){
+  //    let customerFindexPoint = this.localStorageSercive.getCurrentCustomer().findexPoint;     
+  //    if(carDetailDto.findexPoint < customerFindexPoint){       
+  //      this.router.navigate(["/cars/rentals/" + carDetailDto.carId])
+  //    }else{
+  //      this.toastrService.info("Findex Puanınız Yetersizdir!")
+  //    }
+  //  }
 }

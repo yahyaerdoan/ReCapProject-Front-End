@@ -17,6 +17,8 @@ import { CustomerDetailDtoService } from 'src/app/services/customer-detail-dto.s
 import { RentService } from 'src/app/services/rent.service';
 import { CarDetailDtoService } from 'src/app/services/car-detail-dto.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { Customer } from 'src/app/models/customer';
 
 @Component({
   selector: 'app-rental',
@@ -37,6 +39,8 @@ export class RentalComponent implements OnInit {
   Rentable: boolean;
   totalPrice: number;
   rentalForm: FormGroup;
+  findexPoint: number;
+  activeCustomer : Customer;
 
   constructor(
     private rentalService: RentalService,
@@ -48,9 +52,11 @@ export class RentalComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,  
     private router: Router,
+    private localStorageService : LocalStorageService 
   ) {}
 
   ngOnInit(): void {
+    this.activeCustomer = this.localStorageService.getCurrentCustomer();
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId']) {
         this.getCarsDetailsByCar(params['carId']);
@@ -88,7 +94,7 @@ export class RentalComponent implements OnInit {
   createRentalForm() {
     this.rentalForm = this.formBuilder.group({
       carId: [''],
-      customerId: ['', Validators.required],
+      customerId: [this.activeCustomer.customerId, Validators.required],
       rentDate: ['', Validators.required],      
       returnDate: ['', Validators.required],
     });
@@ -106,29 +112,13 @@ export class RentalComponent implements OnInit {
       rentalModel.dailyPrice = this.selectedCar.dailyPrice;
       rentalModel.totalPrice = this.totalPrice;
 
-      this.rentalService.IsRentable(rentalModel).subscribe(
-        (response) => {
+      this.rentService.addToRent(rentalModel);
+      this.toastrService.success('Kiralama Sepetine Eklendi', this.selectedCar.carName);
 
-          // findex puanıda müsait ise sepete eklesin
-          this.rentService.addToRent(rentalModel);
-          this.toastrService.success(
-            'Kiralama Sepetine Eklendi',
-            this.selectedCar.carName
-          );
-        },
-        (responseError) => {
-          this.toastrService.info(
-            'Tercih Ettiğiniz Araç Henüz Müsait Değil!',
-            'Uyarı!'
-          );
-          return this.router.navigate(['/cars']);
-        }
-      );
     } else {
       this.toastrService.error('Formunuz Eksik', 'Hata');
     }
   }
-
   calcTotalPrice() {
     let startDate = new Date(this.rentalForm.value.rentDate);
     let endDate = new Date(this.rentalForm.value.returnDate);

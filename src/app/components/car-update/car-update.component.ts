@@ -174,5 +174,4 @@ export class CarUpdateComponent implements OnInit {
       return false;
     }
   }
-
 }

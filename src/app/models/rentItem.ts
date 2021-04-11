@@ -13,5 +13,7 @@ export class RentItem{
     returnDate: Date; 
     customerId: number;
     totalPrice: number;
+    findexPoint: number
+
 
 }

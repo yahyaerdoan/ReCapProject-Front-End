@@ -55,9 +55,8 @@ export class PaymentComponent implements OnInit {
       validThru: ['', Validators.required],
       cardValidationValue: ['', Validators.required],
       saveCard: [''],
-    });
+    });   
   }
-
   setCurrentCard(card: Card) {
     this.paymentForm.setValue({
       cardholderFirstNameLastName: card.cardholderFirstNameLastName,
@@ -67,8 +66,7 @@ export class PaymentComponent implements OnInit {
       saveCard: false,
     });
     this.cardId = card.cardId;
-  }
-  
+  }  
   payment() {
     if (this.paymentForm.valid) {
       let paymentModel = Object.assign({}, this.paymentForm.value);
@@ -78,6 +76,8 @@ export class PaymentComponent implements OnInit {
 
       this.paymentService.payment(paymentModel).subscribe(
         (response) => {       
+          
+          
           if (paymentModel.saveCard) {
             this.cardService.saveCard(paymentModel).subscribe()
           }
@@ -88,7 +88,6 @@ export class PaymentComponent implements OnInit {
               this.toastrService.success('Rental Eklendi', 'Kiralama');
             }, 
             responseError=>{
-              console.log(responseError)
               this.toastrService.error("Rental Eklenemedi","Hata") 
             })
           })
@@ -107,6 +106,6 @@ export class PaymentComponent implements OnInit {
     this.cardService.getCards(this.customerId).subscribe((response) => {
       this.cards = response.data; 
       this.dataLoaded = true;
-    });
+    });    
   }
 }

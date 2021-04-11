@@ -23,9 +23,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { LoginGuard } from './guards/login.guard';
 import { CartListComponent } from './components/cart-list/cart-list.component';
+import { RentalDetailDtoComponent } from './components/rental-detail-dto/rental-detail-dto.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path : "",pathMatch : "full", component : CarDetailDtoComponent},
+  {path : "",pathMatch : "full", component : HomeComponent},
   {path : "cars", component : CarDetailDtoComponent},
   
   {path : "cars/category/:categoryId", component : CarDetailDtoComponent},
@@ -35,36 +37,37 @@ const routes: Routes = [
   {path : "cars/color/:colorId", component : CarDetailDtoComponent},
 
   {path : "cars/add", component : CarAddComponent , canActivate : [LoginGuard]},
-  {path : "brands/add", component : BrandAddComponent},
-  {path : "colors/add", component : ColorAddComponent},
-  {path : "categories/add", component : CategoryAddComponent},
+  {path : "brands/add", component : BrandAddComponent, canActivate : [LoginGuard]},
+  {path : "colors/add", component : ColorAddComponent, canActivate : [LoginGuard]},
+  {path : "categories/add", component : CategoryAddComponent, canActivate : [LoginGuard]},
 
   {path : "login", component : LoginComponent},
   {path : "register", component : RegisterComponent},
   {path : "profile", component : ProfileComponent}, 
 
-  {path : "brands/update", component : BrandUpdateComponent},
-  {path : "categories/update", component : CategoryUpdateComponent},
-  {path : "colors/update", component : ColorUpdateComponent},
-  {path : "cars/update", component : CarUpdateComponent},
+  {path : "brands/update", component : BrandUpdateComponent, canActivate : [LoginGuard]},
+  {path : "categories/update", component : CategoryUpdateComponent, canActivate : [LoginGuard]},
+  {path : "colors/update", component : ColorUpdateComponent, canActivate : [LoginGuard]},
+  {path : "cars/update", component : CarUpdateComponent, canActivate : [LoginGuard]},
 
-  {path : "brands/update/:brandId",component:BrandUpdateComponent},
-  {path : "categories/update/:categoryId",component:CategoryUpdateComponent},
-  {path : "cars/update/:carId",component:CarUpdateComponent},
-  {path : "colors/update/:colorId",component:ColorUpdateComponent},
+  {path : "brands/update/:brandId",component:BrandUpdateComponent, canActivate : [LoginGuard]},
+  {path : "categories/update/:categoryId",component:CategoryUpdateComponent, canActivate : [LoginGuard]},
+  {path : "cars/update/:carId",component:CarUpdateComponent, canActivate : [LoginGuard]},
+  {path : "colors/update/:colorId",component:ColorUpdateComponent, canActivate : [LoginGuard]},
 
-  {path : "brands/list",component: BrandListComponent },
-  {path : "categories/list",component: CategoryListComponent },
-  {path : "colors/list",component: ColorListComponent },
-  {path : "cars/list",component: CarListComponent },
+  {path : "brands/list",component: BrandListComponent , canActivate : [LoginGuard]},
+  {path : "categories/list",component: CategoryListComponent, canActivate : [LoginGuard] },
+  {path : "colors/list",component: ColorListComponent, canActivate : [LoginGuard] },
+  {path : "cars/list",component: CarListComponent, canActivate : [LoginGuard] },
 
   {path : "cars/rentals",component: RentalComponent },
-  {path : "cars/rentals/:carId",component: RentalComponent },
+  {path : "cars/rentals/:carId",component: RentalComponent, canActivate : [LoginGuard]},
+  {path : "rentals",component: RentalDetailDtoComponent, canActivate : [LoginGuard]},
 
   {path : "cartlist",component: CartListComponent },
   {path : "cars/image/:carId/cartlist",component: CartListComponent },
 
-  {path : "payment",component: PaymentComponent},
+  {path : "payment",component: PaymentComponent, canActivate : [LoginGuard]},
 
   {path : "customers",component: CustomerComponent},
   {path : "customersDetailDtos",component: CustomerDetailDtoComponent},

@@ -12,13 +12,15 @@
 
   <div class="mb-3">
     <label for="filterText" class="form-label"><h6>Marka Sorgula!</h6></label>
-
+    
     <input
+    
       type="text"
       [(ngModel)]="filterText"
       class="form-control"
       id="marka sorgula"
       placeholder="sorgula!"
+      appColor
     />
   </div>
   <div *ngIf="filterText" class="alert alert-success">
