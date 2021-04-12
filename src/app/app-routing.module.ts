@@ -67,7 +67,7 @@ const routes: Routes = [
 
   {path : "cars/rentals",component: RentalComponent },
   {path : "cars/rentals/:carId",component: RentalComponent, canActivate : [LoginGuard]},
-  {path : "rentals",component: RentalDetailDtoComponent, canActivate : [LoginGuard]},
+  {path : "rentalDetailDtos/list",component: RentalDetailDtoComponent, canActivate : [LoginGuard]},
 
   {path : "cartlist",component: CartListComponent },
   {path : "cars/image/:carId/cartlist",component: CartListComponent },

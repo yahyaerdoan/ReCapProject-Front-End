@@ -1,3 +1,4 @@
+<div class="content">
 <div
   *ngIf="dataLoaded == false"
   class="spinner-grow text-warning"
@@ -5,29 +6,77 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
+
+<div class="row">
+  <div class="alert alert-info text-center">
+  <h5>    
+      <p class="font-weight-bold">Araç Kira Durum Listesi</p>
+  </h5>
+</div>
 <div *ngIf="dataLoaded == true" class="rentalDetailDto"></div>
-<th>Araç Kiralama Listesi</th>
 <table *ngIf="dataLoaded == true" class="table table-hover">
   <thead>
     <tr>
+      <th>Müşteri</th>
       <th>Araç İsmi</th>
       <th>Marka</th>
-      <th>Model</th>
-      <th>Adı Soyadı</th>
+      <th>Model</th>      
       <th>Şirket Adı</th>
-      <th>Kiralama Tarihi</th>
-      <th>Kiralama Teslim Tarihi</th>
+      <th>Kira Tarihi</th>
+      <th>Teslim Tarihi</th>
+      <th>Teslim Al</th>      
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let rentalDetailDto of rentalDetailDtos">
+    <tr *ngFor="let rentalDetailDto of rentalDetailDtos | filterRental : false">
+      <td>{{ rentalDetailDto.firstName + " " + rentalDetailDto.lastName }}</td>
       <td>{{ rentalDetailDto.carName }}</td>
       <td>{{ rentalDetailDto.brandName }}</td>
-      <td>{{ rentalDetailDto.brandModel }}</td>
-      <td>{{ rentalDetailDto.firstName + " " + rentalDetailDto.lastName }}</td>
+      <td>{{ rentalDetailDto.brandModel }}</td>    
       <td>{{ rentalDetailDto.companyName }}</td>
-      <td>{{ rentalDetailDto.rentDate }}</td>
-      <td>{{ rentalDetailDto.returnDate }}</td>
+      <td>{{ rentalDetailDto.rentDate | date:"dd-MM-YYYY"}}</td>
+      <td>{{ (rentalDetailDto.returnDate == null) ? "Araç Kirada": rentalDetailDto.returnDate | date:"dd-MM-YYYY"}}</td>
+      <td>      
+      <button class="btn btn-primary btn-sm" (click)="carIsReturned(rentalDetailDto.carId)">Teslim Al</button>
+      </td>
     </tr>
   </tbody>
 </table>
+</div>
+
+<div  class="d-grid gap-2 col-6 mx-auto" class="diveder" style="border: 1px solid rgb(223, 23, 23); margin-top: 25px; margin-bottom: 30px" ></div>
+
+
+<div class="row">
+  <div class="alert alert-success text-center">
+    <h5>    
+        <p class="font-weight-bold">Araç Kiralama Geçmiş Listesi</p>
+    </h5>
+  </div>  
+<div *ngIf="dataLoaded == true" class="rentalDetailDto"></div>
+<table *ngIf="dataLoaded == true" class="table table-hover">
+  <thead>
+    <tr>
+      <th>Müşteri</th>
+      <th>Araç İsmi</th>
+      <th>Marka</th>
+      <th>Model</th>      
+      <th>Şirket Adı</th>
+      <th>Kira Tarihi</th>
+      <th>Teslim Tarihi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rentalDetailDto of rentalDetailDtos | filterRental : true">
+      <td>{{ rentalDetailDto.firstName + " " + rentalDetailDto.lastName }}</td>
+      <td>{{ rentalDetailDto.carName }}</td>
+      <td>{{ rentalDetailDto.brandName }}</td>
+      <td>{{ rentalDetailDto.brandModel }}</td>    
+      <td>{{ rentalDetailDto.companyName }}</td>
+      <td>{{ rentalDetailDto.rentDate | date : "dd.MM.yyyy" }}</td>
+      <td>{{ (rentalDetailDto.returnDate == null) ? "Araç Kirada": rentalDetailDto.returnDate | date:"dd.MM.YYYY"}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

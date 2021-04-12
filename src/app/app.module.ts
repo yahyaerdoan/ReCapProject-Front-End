@@ -54,6 +54,7 @@ import { CarUpdateComponent } from './components/car-update/car-update.component
 import { HomeComponent } from './components/home/home.component';
 import { ColorDirective } from './directives/color.directive';
 import { ImageAddComponent } from './components/image-add/image-add.component';
+import { FilterRentalPipe } from './pipes/filter-rental.pipe';
 
 
 @NgModule({
@@ -101,6 +102,7 @@ import { ImageAddComponent } from './components/image-add/image-add.component';
     HomeComponent,
     ColorDirective,
     ImageAddComponent,
+    FilterRentalPipe,
     
 
   ],

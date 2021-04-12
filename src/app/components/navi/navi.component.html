@@ -29,6 +29,27 @@
           <a class="nav-link" href="#"></a>
         </li>
         <app-rent-summary> </app-rent-summary>
+
+        <li *ngIf="isAuth()" class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Kiralama
+          </a>
+          <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">          
+            <li>
+              <a class="dropdown-item" routerLink="/rentalDetailDtos/list"><h6>Kiralık & Teslim</h6></a
+              >
+            </li>          
+          </ul>
+        </li>
+
+
         <li *ngIf="isAuth()" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
