@@ -53,6 +53,7 @@ import { CarListComponent } from './components/car-list/car-list.component';
 import { CarUpdateComponent } from './components/car-update/car-update.component';
 import { HomeComponent } from './components/home/home.component';
 import { ColorDirective } from './directives/color.directive';
+import { ImageAddComponent } from './components/image-add/image-add.component';
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import { ColorDirective } from './directives/color.directive';
     CartListComponent,
     HomeComponent,
     ColorDirective,
+    ImageAddComponent,
     
 
   ],

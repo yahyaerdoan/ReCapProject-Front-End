@@ -29,7 +29,7 @@
           <a class="nav-link" href="#"></a>
         </li>
         <app-rent-summary> </app-rent-summary>
-        <li class="nav-item dropdown">
+        <li *ngIf="isAuth()" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -40,7 +40,7 @@
           >
             Liste
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul  class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <a class="dropdown-item" routerLink="/categories/list"><h6>Kategori Listesi</h6></a
               >
@@ -59,7 +59,7 @@
           </ul>
         </li>
 
-        <li class="nav-item dropdown">
+        <li *ngIf="isAuth()" class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
             href="#"

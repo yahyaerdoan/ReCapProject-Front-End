@@ -1,0 +1,40 @@
+<div class="container">
+  <div>
+    <h5 class="title font-weight-bold">Araç Resimleri</h5>
+  </div>
+
+  <div class="row text-center text-lg-left">
+    <div class="col-lg-3 col-md-4 col-6 box" *ngFor="let image of images">
+      <img
+        class="img-fluid img-thumbnail"
+        src="{{ path + image.imagePath }}"
+        alt=""
+      />
+      <div *ngIf="image.imagePath != 'default.jpg'">
+        <button class="btn btn-primary btn-sm delete" (click)="delete(image)">
+          Sil
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="custom-file">
+        <input
+          type="file"
+          class="custom-file-input"
+          id="imageFile"
+          (change)="fileSelected($event)"
+          accept=".png,.jpg,.jpeg"
+        />
+        <label class="custom-file-label" for="imageFile">Dosya seç</label>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <button class="btn btn-primary" (click)="add()">Resim Ekle</button>
+    </div>
+   
+  </div>
+</div>

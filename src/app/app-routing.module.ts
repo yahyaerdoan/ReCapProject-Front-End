@@ -25,6 +25,8 @@ import { LoginGuard } from './guards/login.guard';
 import { CartListComponent } from './components/cart-list/cart-list.component';
 import { RentalDetailDtoComponent } from './components/rental-detail-dto/rental-detail-dto.component';
 import { HomeComponent } from './components/home/home.component';
+import { ImageComponent } from './components/image/image.component';
+import { ImageAddComponent } from './components/image-add/image-add.component';
 
 const routes: Routes = [
   {path : "",pathMatch : "full", component : HomeComponent},
@@ -40,6 +42,9 @@ const routes: Routes = [
   {path : "brands/add", component : BrandAddComponent, canActivate : [LoginGuard]},
   {path : "colors/add", component : ColorAddComponent, canActivate : [LoginGuard]},
   {path : "categories/add", component : CategoryAddComponent, canActivate : [LoginGuard]},
+
+  {path : "images/add", component : ImageAddComponent, canActivate : [LoginGuard]},
+  {path : "image/:carId", component : ImageAddComponent, canActivate:[LoginGuard]},
 
   {path : "login", component : LoginComponent},
   {path : "register", component : RegisterComponent},
