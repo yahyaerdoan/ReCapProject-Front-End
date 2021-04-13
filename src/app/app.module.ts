@@ -55,6 +55,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ColorDirective } from './directives/color.directive';
 import { ImageAddComponent } from './components/image-add/image-add.component';
 import { FilterRentalPipe } from './pipes/filter-rental.pipe';
+import { ImageListComponent } from './components/image-list/image-list.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { FilterRentalPipe } from './pipes/filter-rental.pipe';
     ColorDirective,
     ImageAddComponent,
     FilterRentalPipe,
+    ImageListComponent,
     
 
   ],

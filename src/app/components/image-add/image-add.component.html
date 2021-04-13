@@ -11,30 +11,48 @@
         alt=""
       />
       <div *ngIf="image.imagePath != 'default.jpg'">
-        <button class="btn btn-primary btn-sm delete" (click)="delete(image)">
+        <button class="btn btn-outline-danger btn-sm delete" (click)="delete(image)">          
           Sil
         </button>
       </div>
     </div>
   </div>
 
+  <div
+    class="d-grid gap-2 col-6 mx-auto"
+    class="diveder"
+    style="
+      border: 1px solid rgb(223, 23, 23);
+      margin-top: 25px;
+      margin-bottom: 30px;
+    "
+  ></div>
+
   <div class="row">
-    <div class="col-6">
-      <div class="custom-file">
+    <div class="col-6" >
+      <div class="mb-3" appColor>
         <input
           type="file"
           class="custom-file-input"
           id="imageFile"
           (change)="fileSelected($event)"
-          accept=".png,.jpg,.jpeg"
+          accept=".png,.jpg,.jpeg"          
         />
         <label class="custom-file-label" for="imageFile">Dosya seç</label>
       </div>
     </div>
 
-    <div class="col-4">
-      <button class="btn btn-primary" (click)="add()">Resim Ekle</button>
+    <div class="col-4" class="d-grid gap-2">
+      <button class="btn btn-outline-success" (click)="add()">Resim Ekle</button>
     </div>
-   
   </div>
+  <div
+    class="d-grid gap-2 col-6 mx-auto"
+    class="diveder"
+    style="
+      border: 1px solid rgb(223, 23, 23);
+      margin-top: 25px;
+      margin-bottom: 30px;
+    "
+  ></div>
 </div>

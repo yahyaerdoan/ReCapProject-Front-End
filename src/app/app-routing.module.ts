@@ -27,6 +27,7 @@ import { RentalDetailDtoComponent } from './components/rental-detail-dto/rental-
 import { HomeComponent } from './components/home/home.component';
 import { ImageComponent } from './components/image/image.component';
 import { ImageAddComponent } from './components/image-add/image-add.component';
+import { ImageListComponent } from './components/image-list/image-list.component';
 
 const routes: Routes = [
   {path : "",pathMatch : "full", component : HomeComponent},
@@ -64,6 +65,7 @@ const routes: Routes = [
   {path : "categories/list",component: CategoryListComponent, canActivate : [LoginGuard] },
   {path : "colors/list",component: ColorListComponent, canActivate : [LoginGuard] },
   {path : "cars/list",component: CarListComponent, canActivate : [LoginGuard] },
+  {path : "images/list",component: ImageListComponent, canActivate : [LoginGuard] },
 
   {path : "cars/rentals",component: RentalComponent },
   {path : "cars/rentals/:carId",component: RentalComponent, canActivate : [LoginGuard]},

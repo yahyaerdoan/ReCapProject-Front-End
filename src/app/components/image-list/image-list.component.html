@@ -1,0 +1,31 @@
+<div class="alert alert-info text-center"><h5>Resim İşlemleri</h5></div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="width: 200px">Araç No</th>
+      <th scope="col" style="width: 500px">Araç ismi</th>      
+      <th scope="col" style="width: 500px">Bilgileri</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of cars">
+      <th scope="row">{{ car.carId }}</th>
+      <td>{{ car.carName }}</td>      
+      <td>{{ car.description }}</td>
+      
+      <td>
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-outline-success"
+            routerLink="/image/{{car.carId}}"
+          >
+            Resim Ekle
+          </button>          
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
