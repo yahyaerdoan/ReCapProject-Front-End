@@ -63,7 +63,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 
 ## Kullanılan Teknolojiler (Front-End) :
 
-# Paketler:
+# Paketler :
 
 • Angular 11.2.5
 • Angular CLI 11.2.4
@@ -74,7 +74,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 • bootswatch 4.6.0
 • font-awesome 4.7.0
 
-# Teknikler:
+# Teknikler :
 
 • Custom Form Control
 • Custom Pipe
@@ -84,6 +84,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 • LocalStorage Service
 
 ## Görseller
+
 Ana Sayfa
 image
 
