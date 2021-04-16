@@ -198,3 +198,7 @@ Araç detay sayfası
  
  Findex puan kontorlü yapıldı tercih edilen araç kiralama takvimine yönlendirilemedi
  ![image](https://user-images.githubusercontent.com/77584301/115087267-838bb480-9f16-11eb-8813-0c25182538aa.png)
+ 
+ Custom directive uygulandı
+ ![image](https://user-images.githubusercontent.com/77584301/115087497-ed0bc300-9f16-11eb-962c-091796655a4f.png)
+
