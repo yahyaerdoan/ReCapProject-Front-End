@@ -61,7 +61,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 • AOP Teknikleri (Caching, Validation, Performance, Transaction)
 • Swagger Web Api UI
 
-## Kullanılan Teknolojiler (Front-End)
+## Kullanılan Teknolojiler (Front-End) :
 
 * Paketler:
 
