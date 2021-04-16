@@ -65,6 +65,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 
 # Paketler :
 
+• TypScript
 • Angular 11.2.5
 • Angular CLI 11.2.4
 • Bootstrap 5.0.0-beta2
