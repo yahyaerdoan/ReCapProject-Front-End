@@ -44,7 +44,8 @@
         >
           <img
             src="{{ path }}/{{ image.imagePath }}"
-            width="800" height="395"
+            width="800"
+            height="395"
             alt="{{ image.imagePath }}"
           />
         </div>
@@ -75,17 +76,25 @@
   <div class="col-md-4">
     <div *ngIf="carDetailDto" class="card">
       <div class="card-body">
-        <h5 class="card-title"><strong> {{ carDetailDto.carName }}</strong></h5>
+        <h5 class="card-title">
+          <strong> {{ carDetailDto.carName }}</strong>
+        </h5>
         <p class="card-text">{{ carDetailDto.description }}</p>
       </div>
 
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Kategori : {{ carDetailDto.categoryName }}</li>
+        <li class="list-group-item">
+          Kategori : {{ carDetailDto.categoryName }}
+        </li>
         <li class="list-group-item">Marka : {{ carDetailDto.brandName }}</li>
         <li class="list-group-item">Marka : {{ carDetailDto.brandModel }}</li>
         <li class="list-group-item">Renk : {{ carDetailDto.colorName }}</li>
-        <li class="list-group-item">Model Yılı : {{ carDetailDto.modelYear }}</li>
-        <li class="list-group-item">Günlük Ücret : {{ carDetailDto.dailyPrice | currency: "TRY":"₺" }}</li>
+        <li class="list-group-item">
+          Model Yılı : {{ carDetailDto.modelYear }}
+        </li>
+        <li class="list-group-item">
+          Günlük Ücret : {{ carDetailDto.dailyPrice | currency: "TRY":"₺" }}
+        </li>
       </ul>
       <div class="card-body">
         <button
@@ -97,18 +106,96 @@
           Kirala
         </button>
 
-        &nbsp;
-        &nbsp;
-        &nbsp;
+        &nbsp; &nbsp; &nbsp;
 
-        <button
-        routerLink="/cars"       
-        type="button"
-        class="btn btn-primary"
-      >
-        Geri
-      </button>
+        <button routerLink="/cars" type="button" class="btn btn-primary">
+          Geri
+        </button>
       </div>
+    </div>
+  </div>
+
+  <div class="col-xxl-13 col-lg-12 col-24">
+    <div class="section-content">
+      <h5 class="default"></h5>
+      <p>
+        Kiralık araç filosunda her segmentte araç bulabileceğiniz Rent A Car Project, aynı
+        zamanda en geniş filoya sahip olan araç kiralama şirketidir. Her zaman
+        eşsiz bir müşteri deneyimi sunmayı amaçlayan Rent A Car Project, filosunu Ekonomik,
+        Konfor, Prestij, Premium, Lüks ve Van olarak 6 farklı araç grubu altında
+        müşterilerine sunar.
+      </p>
+      <h5 class="default">Ekonomik Ara&#231; Modelleri</h5>
+      <p>
+        Kiralık araç modelleri arasında en uygun fiyatlı araçların yer aldığı
+        ekonomik filomuz, toplamda 3 marka araçtan
+        oluşmaktadır<strong>.</strong>&nbsp;Ekonomik grup araçlarımız, 4
+        yetişkin ve 2 büyük bavulu taşıyabilecek kapasitesiyle; kilitlenme
+        karşıtı frenleme sistemi sayesinde güvenli bir yolculuk sunmaktadır.
+      </p>
+      <h5 class="default">Ara&#231; Filosu Modellerimiz</h5>
+
+      <ul>
+        <li>Fiat Egea</li>
+        <li>Fiat Egea 1.6</li>
+        <li>Chevrolet	Aveo	1.3 D LT</li>
+        <li>Citroën	C-Elysée	1.6 HDi Live</li>
+        
+      </ul>
+
+      <h5 class="default">Kiralama Koşulları</h5>
+      <p></p>
+      <ul>
+        <li>
+          Ekonomik araç filosundan herhangi bir araç kiralamak için minimum 21
+          yaşında olmak gerekir. Eğer 21 yaşından küçükseniz, Genç Sürücü ücreti
+          ödemeniz gerekmektedir.
+        </li>
+        <li>En az 1 senedir ehliyet sahibi olmak,</li>
+        <li>1 adet kredi kartına sahip olmak gerekir.&nbsp;</li>
+      </ul>
+      <p>
+        Ekonomik araç filosunda yer alan kiralık araç fiyatları, çeşitli
+        koşullara ve kampanyalara göre değişiklik gösterebilmektedir. Bazı
+        durumlarda araç alternatifleri sunulabilmektedir.
+      </p>
+      <h5 class="default">Neden Ekonomik Ara&#231; Tercih Etmelisiniz?</h5>
+      <p>
+        Rent A Car Project&rsquo;in ekonomik kiralık araçları; diğer araç kategorilerine göre
+        nispeten daha küçük ve yakıt harcamasında bütçe dostu olması sayesinde
+        şehir içi veya yakın mesafeli şehirler arası tatiller, iş gezileri ve
+        şehir içinde kullanım için mükemmel bir seçenek haline geliyor.<br />
+        <br />
+        Ekonomik araç filomuzda, kasa tipi olarak sedan ve hatchback araçlar
+        bulunmaktadır. Yakıt tipleri dizel ve benzinli; şanzımanları ise düz ve
+        otomatiktir.
+      </p>
+      <h5 class="default">
+        Ekonomik Ara&#231; ile B&#252;t&#231;enizi Koruyun
+      </h5>
+      <p>
+        Bir seyahate çıktığınızda; ulaşım ve konaklama seyahatinizin temelini
+        oluşturur ve bunların yanında endişelenmek isteyeceğiniz son şey araç
+        kiralama ücretidir. Ekonomik araç kiralamak hem daha ucuz, hem de
+        yolculuğunuzu daha hesaplı hale getirir.
+      </p>
+      <h5 class="default">Ekonomik Aracın Farkı Nedir?</h5>
+      <p>
+        Ekonomik araçların ilk göze çarpan yanı genellikle, boyutlarıdır.
+        Ekonomik kiralık araçlar, diğer araç kategorilerine göre daha küçük
+        olabilirler. Düşük maliyetli olan ekonomik araçlar, yakıt açısından daha
+        verimlidir.<br />
+        <br />
+        Daha küçük boyut, daha kolay manevra kabiliyetine sahip olduğunuz
+        anlamına gelir. Şehir yolculuğuna çıkıyorsanız, ekonomik araçlarımız
+        sayesinde, şehrin içindeki dar yollardan daha kolay geçer ve tüm şehri
+        istediğiniz gibi keşfedebilirsiniz!<br />
+        <br />
+        Araç park etmenin de bir sorun haline gelmediği ekonomik araçlarla,
+        kolay sürüşün tadını çıkaracaksınız.<br />
+        Rahatlığı, kullanım kolaylığı ve seyahat sırasında tasarruf sağlamak
+        için hemen Rent A Car Project&rsquo;ten bir ekonomik araç kiralayın!
+      </p>
     </div>
   </div>
 </div>

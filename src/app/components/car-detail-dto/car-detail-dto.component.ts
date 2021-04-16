@@ -62,10 +62,10 @@ export class CarDetailDtoComponent implements OnInit {
         
       ) {        
         this.getFilterCars(
+          params['brandId'],
           params['categoryId'],
           params['carId'],
-          params['brandId'],
-          params['colorId']
+          params['colorId']          
         );
       } else if (params['categoryId']) {
         this.getCarsDetailsByCategory(params['categoryId']);
@@ -145,8 +145,9 @@ export class CarDetailDtoComponent implements OnInit {
     colorId: number
   ) {
     this.carDetailDtoService
-      .getFilterCars(categoryId, carId, brandId, colorId)
+      .getFilterCars(categoryId, carId, brandId, colorId)      
       .subscribe((response) => {
+        console.log(response)
         this.carDetailDtos = response.data;
         this.dataLoaded = true;
         if (this.carDetailDtos.length == 0) {
@@ -154,6 +155,7 @@ export class CarDetailDtoComponent implements OnInit {
         } else {
           this.toastrService.success('Filitreleme Listelendi');
         }
+        
       });
   }
   getSelectedCategoryId(categoryId: number) {
@@ -185,8 +187,7 @@ export class CarDetailDtoComponent implements OnInit {
     }
   } 
   carControl(carDetailDto : CarDetailDto){
-
-
+    
     let customer = this.localStorageSercive.getCurrentCustomer(); 
     this.rentalService.FindexScoreCheck(customer.customerId, carDetailDto.carId).subscribe(response=>{      
 
