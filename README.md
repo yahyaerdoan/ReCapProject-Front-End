@@ -201,4 +201,8 @@ Araç detay sayfası
  
  Custom directive uygulandı
  ![image](https://user-images.githubusercontent.com/77584301/115087497-ed0bc300-9f16-11eb-962c-091796655a4f.png)
+ 
+ Giriş yapmadan önce sayfanın navbar görünümü
+ ![image](https://user-images.githubusercontent.com/77584301/115088504-f5fd9400-9f18-11eb-821e-1d0ca3798560.png)
+
 
