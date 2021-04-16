@@ -86,7 +86,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 ## Görseller
 
 Ana Sayfa
-image
+![image](https://user-images.githubusercontent.com/77584301/115077007-08220700-9f06-11eb-9af5-ebf31b18572f.png)
 
 Araç Detayları ve Kiralama
 image
