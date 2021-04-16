@@ -29,7 +29,7 @@ Birim testlerini şu yolla yürütmek için `ng e2e` çalıştırın. [Protracto
 
 Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya [Angular CLI Overview and Command Reference](https://angular.io/cli) sayfasına bakın. 
 
-# Araç Kiralama Uygulaması(Front-End) :
+## Araç Kiralama Uygulaması(Front-End) :
 
 * Özellikler :
 
@@ -47,7 +47,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 • Müşterimiz kirlama geçmişine ulaşabilir.
 • Yönetici araç kira durum listesini ve araç kiralama geçmiş listesi görüntüleyebilir.
 
-# Kullanılan Teknolojiler (Back-End) :
+## Kullanılan Teknolojiler (Back-End) :
 
 • Asp.Net Core 3.1
 • Katmanlı Mimari (NTier)
@@ -61,7 +61,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 • AOP Teknikleri (Caching, Validation, Performance, Transaction)
 • Swagger Web Api UI
 
-# Kullanılan Teknolojiler (Front-End)
+## Kullanılan Teknolojiler (Front-End)
 
 * Paketler:
 
@@ -83,6 +83,7 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 • Guards
 • LocalStorage Service
 
+## Görseller
 Ana Sayfa
 image
 
