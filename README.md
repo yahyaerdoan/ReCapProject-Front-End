@@ -33,56 +33,56 @@ Angular CLI hakkında daha fazla yardım almak için `ng help` ı kullanın veya
 
 # Özellikler :
 
-• Müşterilerimiz kayıt olabilir ve oturum açabilirler.
-• Müşteriye özel alanları giriş yapmayan bir kullanıcı görüntüleyemez.
-• Müşterilerimiz, araç listesini ve detaylarını görüntüleyebilirler.
-• Kategori, Araç ismi, Marka ve Renk seçeneklerine göre filitreleme ve arama yapabilirler.
-• Müşteri ve araç, findex puan sorgulaması yapılmakta olup findex puanına göre kiralama yapılabilir.
-• Findex puanı yeterli olan müşterimiz müsait araçları kiralayabilir.
-• Sisteme yönetici rolü ile giriş yapabilen yönetici, kategorileri, araçları, renkleri, markaları ve araç resimlerini yönetebilir.
-• Kiralanan araca yönelik müşterimizin findex puanı yeterli ise kredi kartı ile ödeme hizmeti sunulur.
-• Yetersiz puanlama durumuında yeterli araçların yeniden görüntülenmesi için müşterimiz araç listesine yönlendirilir.
-• Müşterimize kredi kartlarını kayıt edip etmeyeceği sorusu yöneltilmiş olup, kartını kaydetmesi durumunda, daha sonraki ödemseinde kartına kolayca ulaşabilir.
-• Müşterimiz kiralamış olduğu aracını teslim edebilir.
-• Müşterimiz kirlama geçmişine ulaşabilir.
-• Yönetici araç kira durum listesini ve araç kiralama geçmiş listesi görüntüleyebilir.
+- Müşterilerimiz kayıt olabilir ve oturum açabilirler.
+- Müşteriye özel alanları giriş yapmayan bir kullanıcı görüntüleyemez.
+- Müşterilerimiz, araç listesini ve detaylarını görüntüleyebilirler.
+- Kategori, Araç ismi, Marka ve Renk seçeneklerine göre filitreleme ve arama yapabilirler.
+- Müşteri ve araç, findex puan sorgulaması yapılmakta olup findex puanına göre kiralama yapılabilir.
+- Findex puanı yeterli olan müşterimiz müsait araçları kiralayabilir.
+- Sisteme yönetici rolü ile giriş yapabilen yönetici, kategorileri, araçları, renkleri, markaları ve araç resimlerini yönetebilir.
+- Kiralanan araca yönelik müşterimizin findex puanı yeterli ise kredi kartı ile ödeme hizmeti sunulur.
+- Yetersiz puanlama durumuında yeterli araçların yeniden görüntülenmesi için müşterimiz araç listesine yönlendirilir.
+- Müşterimize kredi kartlarını kayıt edip etmeyeceği sorusu yöneltilmiş olup, kartını kaydetmesi durumunda, daha sonraki ödemseinde kartına kolayca ulaşabilir.
+- Müşterimiz kiralamış olduğu aracını teslim edebilir.
+- Müşterimiz kirlama geçmişine ulaşabilir.
+- Yönetici araç kira durum listesini ve araç kiralama geçmiş listesi görüntüleyebilir.
 
 ## Kullanılan Teknolojiler (Back-End) :
 
-• Asp.Net Core 3.1
-• Katmanlı Mimari (NTier)
-• Design Patterns
-• Autofac (IoC)
-• FluentValidation
-• Log4Net
-• JWT Bearer
-• Entity Framework
-• Json WebApi
-• AOP Teknikleri (Caching, Validation, Performance, Transaction)
-• Swagger Web Api UI
+- Asp.Net Core 3.1
+- Katmanlı Mimari (NTier)
+- Design Patterns
+- Autofac (IoC)
+- FluentValidation
+- Log4Net
+- JWT Bearer
+- Entity Framework
+- Json WebApi
+- AOP Teknikleri (Caching, Validation, Performance, Transaction)
+- Swagger Web Api UI
 
 ## Kullanılan Teknolojiler (Front-End) :
 
 # Paketler :
 
-• TypScript
-• Angular 11.2.5
-• Angular CLI 11.2.4
-• Bootstrap 5.0.0-beta2
-• JQuery 3.6.0
-• Toastr 2.1.4
-• @auth0/angular-jwt (Decode Token) 5.0.2
-• bootswatch 4.6.0
-• font-awesome 4.7.0
+- TypScript
+- Angular 11.2.5
+- Angular CLI 11.2.4
+- Bootstrap 5.0.0-beta2
+- JQuery 3.6.0
+- Toastr 2.1.4
+- @auth0/angular-jwt (Decode Token) 5.0.2
+- bootswatch 4.6.0
+- font-awesome 4.7.0
 
 # Teknikler :
 
-• Custom Form Control
-• Custom Pipe
-• Custom Directive
-• QueryParams
-• Guards
-• LocalStorage Service
+- Custom Form Control
+- Custom Pipe
+- Custom Directive
+- QueryParams
+- Guards
+- LocalStorage Service
 
 ## Görseller
 
